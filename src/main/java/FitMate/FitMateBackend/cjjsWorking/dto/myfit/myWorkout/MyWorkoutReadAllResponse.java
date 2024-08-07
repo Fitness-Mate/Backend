@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout;
 
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.S3FileService;
+import FitMate.FitMateBackend.util.S3Util;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.domain.Machine;
@@ -40,7 +40,7 @@ public class MyWorkoutReadAllResponse {
         Workout workout = myWorkout.getWorkout();
         this.workoutId = workout.getId();
         this.workoutName = workout.getKoreanName();
-        this.imgPath = S3FileService.getAccessURL(ServiceConst.S3_DIR_WORKOUT, workout.getImgFileName());
+        this.imgPath = S3Util.getAccessURL(ServiceConst.S3_DIR_WORKOUT, workout.getImgFileName());
         this.description = workout.getDescription();
 
         for (BodyPart bodyPart : workout.getBodyParts()) {

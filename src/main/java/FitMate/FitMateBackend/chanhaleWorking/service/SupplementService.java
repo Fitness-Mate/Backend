@@ -5,7 +5,7 @@ import FitMate.FitMateBackend.chanhaleWorking.dto.SupplementFlavorDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementSearchForm;
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRepository;
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.S3FileService;
+import FitMate.FitMateBackend.util.S3Util;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.supplement.*;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
@@ -23,7 +23,7 @@ import java.util.List;
 @Slf4j
 public class SupplementService {
     private final SupplementRepository supplementRepository;
-    private final S3FileService s3FileService;
+    private final S3Util s3Util;
 
     private String supplementString = "";
 
@@ -42,7 +42,7 @@ public class SupplementService {
         // 이미지 등록 절차
         if (supplementForm.getImage()!=null && !supplementForm.getImage().isEmpty()) {// 이미지를 업로드 했다면,
 //            String newImage = FileStoreService.storeFile(supplementForm.getImage()); //  업로드 한 이미지 저장
-            String newImage = s3FileService.uploadImage(ServiceConst.S3_DIR_SUPPLEMENT, supplementForm.getImage());
+            String newImage = s3Util.uploadImage(ServiceConst.S3_DIR_SUPPLEMENT, supplementForm.getImage());
             log.info("image:[{}]", newImage);
             supplement.setImageName(newImage); // 이미지 이름 등록
         }
@@ -70,12 +70,12 @@ public class SupplementService {
                 String oldImage = supplement.getImageName();
                 if (!oldImage.equals(ServiceConst.DEFAULT_IMAGE_NAME)) {
                     // 이전 이미지 삭제
-                    s3FileService.deleteImage(ServiceConst.S3_DIR_SUPPLEMENT, oldImage);
+                    s3Util.deleteImage(ServiceConst.S3_DIR_SUPPLEMENT, oldImage);
                     log.info("deletedImage: " + oldImage);
                 }
 //                String newImage = FileStoreService.storeFile(supplementForm.getImage());
                 // 새 이미지 등록
-                String newImage = s3FileService.uploadImage(ServiceConst.S3_DIR_SUPPLEMENT, supplementForm.getImage());
+                String newImage = s3Util.uploadImage(ServiceConst.S3_DIR_SUPPLEMENT, supplementForm.getImage());
                 supplement.setImageName(newImage); // 이미지 이름 등록
                 // 텍스트 정보 업데이트
                 if (supplement.getType() == SupplementType.AminoAcid) {
@@ -114,7 +114,7 @@ public class SupplementService {
             return;
         String supImg = supplement.getImageName();
         if (!supImg.equals(ServiceConst.DEFAULT_IMAGE_NAME)) {
-            s3FileService.deleteImage(ServiceConst.S3_DIR_SUPPLEMENT, supImg);
+            s3Util.deleteImage(ServiceConst.S3_DIR_SUPPLEMENT, supImg);
             log.info("{} 파일이 삭제되었습니다.", supImg);
         }
         supplementRepository.deleteSupplement(id);
@@ -127,7 +127,7 @@ public class SupplementService {
         for (Supplement supplement : supplements) {
             String supImg = supplement.getImageName();
             if (supImg != null && !supImg.equals(ServiceConst.DEFAULT_IMAGE_NAME)) {
-                s3FileService.deleteImage(ServiceConst.S3_DIR_SUPPLEMENT, supImg);
+                s3Util.deleteImage(ServiceConst.S3_DIR_SUPPLEMENT, supImg);
                 log.info("{} 파일이 삭제되었습니다.", supImg);
             }
             supplementRepository.deleteSupplement(supplement.getId());

@@ -1,4 +1,4 @@
-package FitMate.FitMateBackend.cjjsWorking.dto.workout;
+package FitMate.FitMateBackend.workout.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,12 +10,12 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class WorkoutForm {
+public class WorkoutRequest {
     private String englishName;
     private String koreanName;
     private String videoLink;
     private String description;
-    private List<String> bodyPartKoreanName;
-    private List<String> machineKoreanName;
+    private List<Long> bodyPartIdList;
+    private List<Long> machineIdList;
     private MultipartFile image;
 }

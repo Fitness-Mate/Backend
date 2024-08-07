@@ -1,8 +1,7 @@
 package FitMate.FitMateBackend.cjjsWorking.config.securityFilter;
 
-import FitMate.FitMateBackend.cjjsWorking.exception.response.CustomErrorResponse;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.JwtFilterException;
-import FitMate.FitMateBackend.cjjsWorking.exception.response.JwtFilterErrorResponse;
+import FitMate.FitMateBackend.exception.exceptions.JwtFilterException;
+import FitMate.FitMateBackend.exception.response.JwtFilterErrorResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

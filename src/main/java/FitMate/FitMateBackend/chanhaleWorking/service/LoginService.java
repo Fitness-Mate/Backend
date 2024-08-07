@@ -2,10 +2,8 @@ package FitMate.FitMateBackend.chanhaleWorking.service;
 
 import FitMate.FitMateBackend.chanhaleWorking.form.login.LoginForm;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.AuthErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.AuthException;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.CustomException;
+import FitMate.FitMateBackend.exception.errorcodes.AuthErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.AuthException;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.AuthResponse;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.ExtraClaims;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;

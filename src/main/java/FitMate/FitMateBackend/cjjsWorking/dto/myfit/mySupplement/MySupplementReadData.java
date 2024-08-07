@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.cjjsWorking.dto.myfit.mySupplement;
 
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.S3FileService;
+import FitMate.FitMateBackend.util.S3Util;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.myfit.MySupplement;
 import FitMate.FitMateBackend.domain.supplement.*;
@@ -54,7 +54,7 @@ public class MySupplementReadData {
         Supplement supplement = mySupplement.getSupplement();
         this.supplementId = supplement.getId();
         this.supplementName = supplement.getKoreanName();
-        this.imageURL = S3FileService.getAccessURL(ServiceConst.S3_DIR_SUPPLEMENT, supplement.getImageName());
+        this.imageURL = S3Util.getAccessURL(ServiceConst.S3_DIR_SUPPLEMENT, supplement.getImageName());
         this.description = supplement.getDescription();
         this.supplementType = supplement.getType().toString();
         this.flavor = supplement.getFlavor();

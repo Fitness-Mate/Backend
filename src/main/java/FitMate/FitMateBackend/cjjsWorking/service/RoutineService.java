@@ -1,10 +1,9 @@
 package FitMate.FitMateBackend.cjjsWorking.service;
 
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.RoutineSetData;
-import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.RoutineSetRequest;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.SupplementRoutineUpdateRequest;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.CustomException;
+import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.cjjsWorking.repository.RoutineRepository;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.routine.Routine;

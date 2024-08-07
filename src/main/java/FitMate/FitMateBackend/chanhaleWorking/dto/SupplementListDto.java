@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.dto;
 
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.S3FileService;
+import FitMate.FitMateBackend.util.S3Util;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.supplement.*;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
@@ -33,7 +33,7 @@ public class SupplementListDto {
         this.englishCompanyName = getCompanyName(supplement.getEnglishName());
         this.price = supplement.getPrice();
         this.servings = supplement.getServings();
-        this.imageURL = S3FileService.getAccessURL(ServiceConst.S3_DIR_SUPPLEMENT, supplement.getImageName());
+        this.imageURL = S3Util.getAccessURL(ServiceConst.S3_DIR_SUPPLEMENT, supplement.getImageName());
 //        this.image = new UrlResource("file:" + FileStoreService.getFullPath(supplement.getImagePath()));
         this.flavor = supplement.getFlavor();
         this.description = supplement.getDescription();

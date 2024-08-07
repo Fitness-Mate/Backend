@@ -11,7 +11,7 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-public class WorkoutResponseDto {
+public class WorkoutResponse {
     private Long id;
     private String englishName;
     private String koreanName;
@@ -20,7 +20,7 @@ public class WorkoutResponseDto {
     private String description;
     private final List<String> bodyPartKoreanName = new ArrayList<>();
 
-    public WorkoutResponseDto(Workout workout) {
+    public WorkoutResponse(Workout workout) {
         this.id = workout.getId();
         this.englishName = workout.getEnglishName();
         this.koreanName = workout.getKoreanName();

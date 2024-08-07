@@ -37,4 +37,9 @@ public interface ServiceConst {
     public static final int MY_WORKOUT_MAX_SIZE = 7;
     public static final int MY_SUPPLEMENT_MAX_SIZE = 7;
 
+    // page request constraint
+    public static final int MAX_PAGE_OFFSET_SIZE = 100;
+    public static final int MIN_PAGE_OFFSET_SIZE = 1;
+    public static final int MAX_PAGE_LIMIT_SIZE = 20;
+    public static final int MIN_PAGE_LIMIT_SIZE = 1;
 }

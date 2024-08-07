@@ -1,11 +1,14 @@
-package FitMate.FitMateBackend.cjjsWorking.service.storageService;
+package FitMate.FitMateBackend.util;
 
 import FitMate.FitMateBackend.consts.ServiceConst;
+import FitMate.FitMateBackend.exception.ApiErrorCode;
+import FitMate.FitMateBackend.exception.ApiException;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,11 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.Objects;
 import java.util.UUID;
 
-@Service
+
+@Component
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
-@Slf4j
-public class S3FileService {
+@Slf4j(topic = "S3Util")
+public class S3Util {
 
     private final AmazonS3Client amazonS3Client;
 
@@ -35,11 +38,10 @@ public class S3FileService {
             metadata.setContentLength(file.getSize());
             amazonS3Client.putObject(bucket + "/images/" + classification, imageName, file.getInputStream(), metadata);
 
-            log.info("uploadImage: " + imageName);
+            log.info("uploadImage: {}", imageName);
             return imageName;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            throw new ApiException(ApiErrorCode.S3_IMAGE_UPLOAD_EXCEPTION);
         }
     }
 

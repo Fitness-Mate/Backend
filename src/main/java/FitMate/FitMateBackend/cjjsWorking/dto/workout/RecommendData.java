@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.cjjsWorking.dto.workout;
 
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.S3FileService;
+import FitMate.FitMateBackend.util.S3Util;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.domain.Machine;
@@ -28,7 +28,7 @@ public class RecommendData {
         this.koreanName = recommend.getWorkout().getKoreanName();
         this.englishName = recommend.getWorkout().getEnglishName();
         this.description = recommend.getWorkout().getDescription();
-        this.imgPath = S3FileService.getAccessURL(ServiceConst.S3_DIR_WORKOUT, recommend.getWorkout().getImgFileName());
+        this.imgPath = S3Util.getAccessURL(ServiceConst.S3_DIR_WORKOUT, recommend.getWorkout().getImgFileName());
         this.weight = recommend.getWeight();
         this.repeat = recommend.getRepeats();
         this.set = recommend.getSets();

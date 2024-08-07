@@ -1,6 +1,6 @@
-package FitMate.FitMateBackend.cjjsWorking.exception.exceptions;
+package FitMate.FitMateBackend.exception.exceptions;
 
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.RecommendErrorCode;
+import FitMate.FitMateBackend.exception.errorcodes.RecommendErrorCode;
 import lombok.Getter;
 
 @Getter

@@ -2,8 +2,8 @@ package FitMate.FitMateBackend.cjjsWorking.service.recommendService;
 
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
 import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutRecommendationRequest;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.CustomException;
+import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.cjjsWorking.repository.*;
 import FitMate.FitMateBackend.cjjsWorking.repository.recommend.RecommendedWorkoutRepository;
 import FitMate.FitMateBackend.cjjsWorking.repository.recommend.WorkoutRecommendationRepository;

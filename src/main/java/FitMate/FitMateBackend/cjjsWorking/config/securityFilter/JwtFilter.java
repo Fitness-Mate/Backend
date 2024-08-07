@@ -1,8 +1,7 @@
 package FitMate.FitMateBackend.cjjsWorking.config.securityFilter;
 
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.JwtFilterErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.JwtFilterException;
+import FitMate.FitMateBackend.exception.errorcodes.JwtFilterErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.JwtFilterException;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -30,9 +29,12 @@ public class JwtFilter extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
 
     @Override
-    protected void doFilterInternal(@NonNull HttpServletRequest request,
-                                    @NonNull HttpServletResponse response,
-                                    @NonNull FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(
+        @NonNull HttpServletRequest request,
+        @NonNull HttpServletResponse response,
+        @NonNull FilterChain filterChain
+    ) throws ServletException, IOException {
+
         final String authHeader = request.getHeader("Authorization");
         System.out.println("authHeader: " + authHeader);
         final String accessToken;
@@ -76,6 +78,8 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
     private boolean isPublic(String uri) {
+        if(uri.startsWith("/api/admin")) return true;
+
         //회원가입, 로그인 관련 요청
         if(uri.equals("/auth/login") || uri.equals("/user/auth") ||
                 uri.equals("/user/auth/jwt/admin/register") || uri.startsWith("/user/auth/verify/email/")) {

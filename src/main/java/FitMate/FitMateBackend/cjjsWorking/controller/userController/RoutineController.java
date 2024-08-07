@@ -5,8 +5,8 @@ import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.ReadUserInfoResponse
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.RoutineReadAllResponse;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.RoutineSetRequest;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.SupplementRoutineUpdateRequest;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.CustomException;
+import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.cjjsWorking.service.RoutineService;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
 import FitMate.FitMateBackend.domain.User;

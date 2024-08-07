@@ -10,8 +10,8 @@ import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutCreateReq
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutReadAllResponse;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutSearchResponse;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutUpdateRequest;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.CustomException;
+import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.workout.repository.WorkoutRepository;
 import FitMate.FitMateBackend.cjjsWorking.service.MyFitService;
 import FitMate.FitMateBackend.cjjsWorking.service.RoutineService;

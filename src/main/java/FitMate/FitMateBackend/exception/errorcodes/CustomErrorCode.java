@@ -1,4 +1,4 @@
-package FitMate.FitMateBackend.cjjsWorking.exception.errorcodes;
+package FitMate.FitMateBackend.exception.errorcodes;
 
 import FitMate.FitMateBackend.consts.ServiceConst;
 import lombok.AllArgsConstructor;

@@ -8,8 +8,8 @@ import FitMate.FitMateBackend.chanhaleWorking.repository.RecommendedSupplementRe
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRecommendationRepository;
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRepository;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.RecommendErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.RecommendException;
+import FitMate.FitMateBackend.exception.errorcodes.RecommendErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.RecommendException;
 import FitMate.FitMateBackend.cjjsWorking.service.apiService.DeepLTranslateService;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.User;
