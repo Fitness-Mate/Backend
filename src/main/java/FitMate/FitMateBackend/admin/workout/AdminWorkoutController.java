@@ -5,6 +5,7 @@ import static FitMate.FitMateBackend.common.ApiResponseUtil.success;
 import FitMate.FitMateBackend.common.ApiPageRequest;
 import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/admin/workout")
+@Slf4j(topic = "AdminWorkoutController")
 public class AdminWorkoutController {
 
     private final AdminWorkoutService adminWorkoutService;
@@ -35,13 +37,14 @@ public class AdminWorkoutController {
         return success(adminWorkoutService.read(id));
     }
 
-    @GetMapping("/list")
+    @GetMapping("")
     public String readAll(@ModelAttribute ApiPageRequest request) {
         return success(adminWorkoutService.readList(request.makePageable()));
     }
 
     @PutMapping("/{id}")
-    public String update(@Validated @RequestBody WorkoutRequest request, @PathVariable("id") Long id) {
+    public String update(@Validated @RequestBody WorkoutRequest request,
+        @PathVariable("id") Long id) {
         adminWorkoutService.update(request, id);
         return success();
     }

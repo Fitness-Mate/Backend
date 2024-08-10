@@ -12,7 +12,6 @@ import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
 import FitMate.FitMateBackend.workout.dto.WorkoutResponse;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import FitMate.FitMateBackend.workout.entity.WorkoutMapper;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -39,14 +38,18 @@ public class AdminWorkoutService {
 
     /**
      * Workout 생성
+     *
      * @param request Workout 생성 정보
-     * */
+     */
     @Transactional
     public void create(WorkoutRequest request) {
 
         /* 운동 이름 중복 예외처리 */
-        Optional<Workout> duplicateWorkout = adminWorkoutRepository.findByKoreanNameOrEnglishName(request.getKoreanName(), request.getEnglishName());
-        if(duplicateWorkout.isPresent()) throw new ApiException(ApiErrorCode.WORKOUT_ALREADY_EXIST_EXCEPTION);
+        Optional<Workout> duplicateWorkout = adminWorkoutRepository.findByKoreanNameOrEnglishName(
+            request.getKoreanName(), request.getEnglishName());
+        if (duplicateWorkout.isPresent()) {
+            throw new ApiException(ApiErrorCode.WORKOUT_ALREADY_EXIST_EXCEPTION);
+        }
 
         /* S3 파일 업로드 */
         String imageName = Objects.isNull(request.getImage())
@@ -80,18 +83,22 @@ public class AdminWorkoutService {
 
     /**
      * Workout 조회
+     *
      * @param id 조회 대상 Workout
-     * */
-    public Workout read(Long id) {
-        return adminWorkoutRepository.findById(id).orElseThrow(
-            ()->new ApiException(ApiErrorCode.WORKOUT_NOT_FOUND_EXCEPTION)
+     */
+    public WorkoutResponse read(Long id) {
+        Workout workout = adminWorkoutRepository.findById(id).orElseThrow(
+            () -> new ApiException(ApiErrorCode.WORKOUT_NOT_FOUND_EXCEPTION)
         );
+
+        return new WorkoutResponse(workout);
     }
 
     /**
      * 운동 리스트 조회
+     *
      * @param pageable 페이징 정보
-     * */
+     */
     public PageImpl<WorkoutResponse> readList(Pageable pageable) {
         Page<Workout> workoutList = adminWorkoutRepository.findAll(pageable);
         return new PageImpl<>(
@@ -103,9 +110,10 @@ public class AdminWorkoutService {
 
     /**
      * Workout 업데이트 (개발 중)
+     *
      * @param request Workout 업데이트 정보
-     * @param id 업데이트 대상 Workout
-     * */
+     * @param id      업데이트 대상 Workout
+     */
     @Transactional
     public void update(WorkoutRequest request, Long id) {
         Workout workout = adminWorkoutRepository.findById(id).orElseThrow(
@@ -113,20 +121,24 @@ public class AdminWorkoutService {
         );
 
         /* 운동 이름 중복 예외처리 */
-        Optional<Workout> duplicateWorkout = adminWorkoutRepository.findByKoreanNameOrEnglishName(request.getKoreanName(), request.getEnglishName());
-        if(duplicateWorkout.isPresent()) throw new ApiException(ApiErrorCode.WORKOUT_ALREADY_EXIST_EXCEPTION);
+        Optional<Workout> duplicateWorkout = adminWorkoutRepository.findByKoreanNameOrEnglishName(
+            request.getKoreanName(), request.getEnglishName());
+        if (duplicateWorkout.isPresent()) {
+            throw new ApiException(ApiErrorCode.WORKOUT_ALREADY_EXIST_EXCEPTION);
+        }
 
     }
 
     /**
      * Workout 삭제
+     *
      * @param id 삭제 대상 Workout
-     * */
+     */
     @Transactional
     public void delete(Long id) {
         adminWorkoutRepository.findById(id).orElseThrow(
-            ()->new ApiException(ApiErrorCode.WORKOUT_NOT_FOUND_EXCEPTION)
+            () -> new ApiException(ApiErrorCode.WORKOUT_NOT_FOUND_EXCEPTION)
         );
-        adminWorkoutRepository.deleteById(id);
+//        adminWorkoutRepository.deleteById(id);
     }
 }

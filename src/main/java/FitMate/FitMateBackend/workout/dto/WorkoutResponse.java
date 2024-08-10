@@ -2,6 +2,7 @@ package FitMate.FitMateBackend.workout.dto;
 
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.domain.Machine;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class WorkoutResponse {
     private String videoLink;
     private String description;
     private final List<String> bodyPartKoreanName = new ArrayList<>();
+    private final List<String> machineKoreanName = new ArrayList<>();
 
     public WorkoutResponse(Workout workout) {
         this.id = workout.getId();
@@ -29,6 +31,9 @@ public class WorkoutResponse {
         this.description = workout.getDescription();
         for (BodyPart bodyPart : workout.getBodyParts()) {
             this.bodyPartKoreanName.add(bodyPart.getKoreanName());
+        }
+        for(Machine machine : workout.getMachines()) {
+            this.machineKoreanName.add(machine.getKoreanName());
         }
     }
 }
