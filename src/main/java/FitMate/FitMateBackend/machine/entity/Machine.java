@@ -11,6 +11,9 @@ import jakarta.persistence.ManyToMany;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,7 +21,9 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Machine {
 
     @Id @GeneratedValue
@@ -51,6 +56,9 @@ public class Machine {
 
     public void addWorkout(Workout workout) {
         this.workouts.add(workout);
+    }
+    public void addBodyPart(BodyPart bodyPart) {
+        this.bodyParts.add(bodyPart);
     }
 
     public void removeWorkout(Workout workout) {

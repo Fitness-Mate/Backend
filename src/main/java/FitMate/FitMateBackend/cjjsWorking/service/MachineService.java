@@ -24,24 +24,6 @@ public class MachineService {
     private final BodyPartService bodyPartService;
 
     @Transactional
-    public ResponseEntity<String> saveMachine(MachineRequest request) {
-        if(!this.checkMachineNameDuplicate(request.getKoreanName(), request.getEnglishName()))
-            throw new CustomException(CustomErrorCode.MACHINE_ALREADY_EXIST_EXCEPTION);
-
-        Machine machine = new Machine();
-        machine.update(request.getEnglishName(), request.getKoreanName());
-
-        for (String koreanName : request.getBodyPartKoreanName()) {
-            BodyPart findBodyPart = bodyPartService.findByKoreanName(koreanName);
-            findBodyPart.addMachine(machine);
-            machine.getBodyParts().add(findBodyPart);
-        }
-
-        machineRepository.save(machine);
-        return ResponseEntity.ok("[" + machine.getKoreanName() + ":" + machine.getEnglishName() + "] 등록 완료");
-    }
-
-    @Transactional
     public ResponseEntity<String> updateMachine(Long machineId, MachineRequest request) {
         if(!this.checkMachineNameDuplicate(request.getKoreanName(), request.getEnglishName()))
             throw new CustomException(CustomErrorCode.MACHINE_ALREADY_EXIST_EXCEPTION);

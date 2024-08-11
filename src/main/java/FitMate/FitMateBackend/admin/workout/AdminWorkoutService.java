@@ -67,8 +67,6 @@ public class AdminWorkoutService {
                 () -> new ApiException(ApiErrorCode.BODY_PART_NOT_FOUND_EXCEPTION)
             );
 
-//            workout.getBodyParts().add(bodyPart);
-//            bodyPart.getWorkouts().add(workout);
             workout.addBodypart(bodyPart);
             bodyPart.addWorkout(workout);
         }
@@ -79,8 +77,6 @@ public class AdminWorkoutService {
                 () -> new ApiException(ApiErrorCode.MACHINE_NOT_FOUND_EXCEPTION)
             );
 
-//            workout.getMachines().add(machine);
-//            machine.getWorkouts().add(workout);
             workout.addMachine(machine);
             machine.addWorkout(workout);
         }

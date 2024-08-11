@@ -24,19 +24,6 @@ public class BodyPartService {
     private final BodyPartRepository bodyPartRepository;
 
     @Transactional
-    public ResponseEntity<String> saveBodyPart(BodyPartRequest request) {
-        if(!this.checkBodyPartNameDuplicate(request.getKoreanName(), request.getEnglishName()))
-            throw new CustomException(CustomErrorCode.BODY_PART_ALREADY_EXIST_EXCEPTION);
-
-        BodyPart bodyPart = new BodyPart();
-        bodyPart.update(request.getEnglishName(), request.getKoreanName());
-
-        bodyPartRepository.save(bodyPart);
-
-        return ResponseEntity.ok("[" + bodyPart.getKoreanName() + ":" + bodyPart.getEnglishName() + "] 등록 완료");
-    }
-
-    @Transactional
     public ResponseEntity<String> updateBodyPart(Long bodyPartId, BodyPartRequest request) {
         if(!this.checkBodyPartNameDuplicate(request.getKoreanName(), request.getEnglishName()))
             throw new CustomException(CustomErrorCode.BODY_PART_ALREADY_EXIST_EXCEPTION);

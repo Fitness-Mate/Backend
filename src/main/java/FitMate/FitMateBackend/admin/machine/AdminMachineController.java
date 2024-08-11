@@ -21,13 +21,9 @@ public class AdminMachineController {
 
     @PostMapping("")
     public String saveMachine(@RequestBody MachineRequest request) {
+        adminMachineService.create(request);
         return success();
     }
-//
-//    @GetMapping("/machines/{machineId}") //운동기구 단일조회 (TEST 완료)
-//    public ResponseEntity<?> findMachine(@PathVariable("machineId") Long machineId) {
-//        return ResponseEntity.ok(new GetMachineResponse(machineService.findOne(machineId)));
-//    }
 
     @GetMapping("")
     public String readAll(@ModelAttribute ApiPageRequest request) {
