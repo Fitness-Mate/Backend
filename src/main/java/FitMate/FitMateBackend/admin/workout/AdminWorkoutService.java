@@ -46,7 +46,9 @@ public class AdminWorkoutService {
 
         /* 운동 이름 중복 예외처리 */
         Optional<Workout> duplicateWorkout = adminWorkoutRepository.findByKoreanNameOrEnglishName(
-            request.getKoreanName(), request.getEnglishName());
+            request.getKoreanName(),
+            request.getEnglishName()
+        );
         if (duplicateWorkout.isPresent()) {
             throw new ApiException(ApiErrorCode.WORKOUT_ALREADY_EXIST_EXCEPTION);
         }
@@ -59,11 +61,14 @@ public class AdminWorkoutService {
         Workout workout = WorkoutMapper.toEntity(request, imageName);
 
         /* workout - bodypart 연결*/
+//        List<BodyPart> bodyParts = workout.getBodyParts();
         for (Long bodyPartId : request.getBodyPartIdList()) {
             BodyPart bodyPart = adminBodyPartRepository.findById(bodyPartId).orElseThrow(
                 () -> new ApiException(ApiErrorCode.BODY_PART_NOT_FOUND_EXCEPTION)
             );
 
+//            workout.getBodyParts().add(bodyPart);
+//            bodyPart.getWorkouts().add(workout);
             workout.addBodypart(bodyPart);
             bodyPart.addWorkout(workout);
         }
@@ -74,6 +79,8 @@ public class AdminWorkoutService {
                 () -> new ApiException(ApiErrorCode.MACHINE_NOT_FOUND_EXCEPTION)
             );
 
+//            workout.getMachines().add(machine);
+//            machine.getWorkouts().add(workout);
             workout.addMachine(machine);
             machine.addWorkout(workout);
         }
@@ -139,6 +146,6 @@ public class AdminWorkoutService {
         adminWorkoutRepository.findById(id).orElseThrow(
             () -> new ApiException(ApiErrorCode.WORKOUT_NOT_FOUND_EXCEPTION)
         );
-//        adminWorkoutRepository.deleteById(id);
+        adminWorkoutRepository.deleteById(id);
     }
 }

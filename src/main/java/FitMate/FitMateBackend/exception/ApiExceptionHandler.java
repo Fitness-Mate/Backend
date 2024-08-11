@@ -1,5 +1,7 @@
 package FitMate.FitMateBackend.exception;
 
+import static FitMate.FitMateBackend.common.ApiResponseUtil.fail;
+
 import FitMate.FitMateBackend.exception.exceptions.AuthException;
 import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.exception.exceptions.JwtFilterException;
@@ -10,7 +12,6 @@ import FitMate.FitMateBackend.exception.response.JwtFilterErrorResponse;
 import FitMate.FitMateBackend.exception.response.RecommendErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -20,13 +21,13 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ApiExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiExceptionResponse> handleException(Exception e, HttpServletRequest request) {
+    public String handleException(Exception e, HttpServletRequest request) {
         log.error("ERROR: {}, URL: {}, MESSAGE: {}", e.getMessage(), request.getRequestURI(), e.getMessage());
-        return ResponseEntity.status(HttpStatus.OK).body(null);
+        return fail(e.getMessage());
     }
 
     @ExceptionHandler(ApiException.class)
-    public ResponseEntity<ApiExceptionResponse> handleApiException(ApiException e, HttpServletRequest request) {
+    public String handleApiException(ApiException e, HttpServletRequest request) {
 //        log.error("ERROR: {}, URL: {}, MESSAGE: {}", e.getApiErrorCode(), request.getRequestURI(), e.getMessage());
         return handleException(e, request);
     }

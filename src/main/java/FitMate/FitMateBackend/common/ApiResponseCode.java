@@ -7,7 +7,8 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ApiResponseCode {
 
-    SUCCESS(1000)
+    SUCCESS(1000),
+    FAIL(2000),
     ;
 
     private final Integer code;

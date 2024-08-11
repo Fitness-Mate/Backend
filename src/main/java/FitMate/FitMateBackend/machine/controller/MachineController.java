@@ -1,20 +1,19 @@
-package FitMate.FitMateBackend.cjjsWorking.controller.userController;
+package FitMate.FitMateBackend.machine.controller;
 
 import FitMate.FitMateBackend.cjjsWorking.dto.Machine.UserMachineRequest;
 import FitMate.FitMateBackend.cjjsWorking.dto.Machine.UserMachineResponse;
 import FitMate.FitMateBackend.cjjsWorking.service.MachineService;
-import lombok.*;
+import java.util.List;
+import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @RestController
 @RequiredArgsConstructor
-public class UserMachineController {
+public class MachineController {
 
     private final MachineService machineService;
 

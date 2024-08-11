@@ -1,12 +1,13 @@
 package FitMate.FitMateBackend.cjjsWorking.config.securityFilter;
 
+import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
 import FitMate.FitMateBackend.exception.errorcodes.JwtFilterErrorCode;
 import FitMate.FitMateBackend.exception.exceptions.JwtFilterException;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,8 +18,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
-import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
@@ -36,7 +35,6 @@ public class JwtFilter extends OncePerRequestFilter {
     ) throws ServletException, IOException {
 
         final String authHeader = request.getHeader("Authorization");
-        System.out.println("authHeader: " + authHeader);
         final String accessToken;
         final String loginId;
         final String uri = request.getRequestURI();;

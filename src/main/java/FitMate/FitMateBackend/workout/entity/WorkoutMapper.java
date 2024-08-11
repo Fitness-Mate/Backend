@@ -1,16 +1,19 @@
 package FitMate.FitMateBackend.workout.entity;
 
 import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
+import java.util.ArrayList;
 
 public class WorkoutMapper {
 
     public static Workout toEntity(WorkoutRequest request, String imgFileName) {
         return Workout.builder()
-            .englishName(request.getEnglishName())
             .koreanName(request.getKoreanName())
+            .englishName(request.getEnglishName())
             .videoLink(request.getVideoLink())
             .description(request.getDescription())
             .imgFileName(imgFileName)
+            .bodyParts(new ArrayList<>())
+            .machines(new ArrayList<>())
             .build();
     }
 

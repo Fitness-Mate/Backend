@@ -19,7 +19,12 @@ public class ApiResponseUtil {
         return gson.toJson(response);
     }
 
-    private static String fail() {
-        return null;
+    public static String fail(Object data) {
+        ApiResponse response = ApiResponse.builder()
+            .code(ApiResponseCode.FAIL.getCode())
+            .data(data)
+            .build();
+
+        return gson.toJson(response);
     }
 }

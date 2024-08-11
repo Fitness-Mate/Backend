@@ -1,21 +1,20 @@
 package FitMate.FitMateBackend.cjjsWorking.service;
 
+import FitMate.FitMateBackend.bodypart.dto.BodyPartResponse;
 import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartDto;
 import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartRequest;
-import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartResponseDto;
-import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.cjjsWorking.repository.BodyPartRepository;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.domain.Machine;
+import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.workout.entity.Workout;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -55,7 +54,7 @@ public class BodyPartService {
         if(findBodyPart == null)
             throw new CustomException(CustomErrorCode.BODY_PART_NOT_FOUND_EXCEPTION);
 
-        return ResponseEntity.ok(new BodyPartResponseDto(findBodyPart));
+        return ResponseEntity.ok(new BodyPartResponse(findBodyPart));
     }
 
     public boolean checkBodyPartNameDuplicate(String koreanName, String englishName) {

@@ -4,11 +4,10 @@ import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.domain.Machine;
 import FitMate.FitMateBackend.workout.entity.Workout;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
@@ -21,6 +20,7 @@ public class WorkoutResponse {
     private String description;
     private final List<String> bodyPartKoreanName = new ArrayList<>();
     private final List<String> machineKoreanName = new ArrayList<>();
+    private String createdAt;
 
     public WorkoutResponse(Workout workout) {
         this.id = workout.getId();
@@ -35,5 +35,6 @@ public class WorkoutResponse {
         for(Machine machine : workout.getMachines()) {
             this.machineKoreanName.add(machine.getKoreanName());
         }
+        this.createdAt = workout.getCreatedAt().toString();
     }
 }

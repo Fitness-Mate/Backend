@@ -1,4 +1,4 @@
-package FitMate.FitMateBackend.cjjsWorking.config;
+package FitMate.FitMateBackend.common.config;
 
 import FitMate.FitMateBackend.cjjsWorking.config.securityFilter.JwtExceptionFilter;
 import FitMate.FitMateBackend.cjjsWorking.config.securityFilter.JwtFilter;

@@ -1,4 +1,4 @@
-package FitMate.FitMateBackend.cjjsWorking.controller.userController;
+package FitMate.FitMateBackend.bodypart.controller;
 
 import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartsResponse;
 import FitMate.FitMateBackend.cjjsWorking.service.BodyPartService;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class UserBodyPartController {
+public class BodyPartController {
 
     private final BodyPartService bodyPartService;
 
