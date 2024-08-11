@@ -3,17 +3,16 @@ package FitMate.FitMateBackend.cjjsWorking.repository;
 import FitMate.FitMateBackend.cjjsWorking.service.BodyPartService;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.domain.Machine;
-import FitMate.FitMateBackend.domain.QMachine;
+import FitMate.FitMateBackend.machine.entity.Machine;
+import FitMate.FitMateBackend.machine.entity.QMachine;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor

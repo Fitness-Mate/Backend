@@ -28,7 +28,6 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(ApiException.class)
     public String handleApiException(ApiException e, HttpServletRequest request) {
-//        log.error("ERROR: {}, URL: {}, MESSAGE: {}", e.getApiErrorCode(), request.getRequestURI(), e.getMessage());
         return handleException(e, request);
     }
 

@@ -1,14 +1,13 @@
 package FitMate.FitMateBackend.cjjsWorking.dto.workout;
 
-import FitMate.FitMateBackend.util.S3Util;
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.domain.Machine;
 import FitMate.FitMateBackend.domain.recommendation.RecommendedWorkout;
-import lombok.Data;
-
+import FitMate.FitMateBackend.machine.entity.Machine;
+import FitMate.FitMateBackend.util.S3Util;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
 
 @Data
 public class RecommendData {

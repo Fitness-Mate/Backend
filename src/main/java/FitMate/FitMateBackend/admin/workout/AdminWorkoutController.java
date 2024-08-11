@@ -28,7 +28,6 @@ public class AdminWorkoutController {
 
     @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String create(@ModelAttribute WorkoutRequest request) {
-        //TODO - image size validation
         adminWorkoutService.create(request);
         return success();
     }
@@ -51,7 +50,6 @@ public class AdminWorkoutController {
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") Long id) {
-        log.info("delete id : {}", id);
         adminWorkoutService.delete(id);
         return success();
     }

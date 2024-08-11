@@ -2,7 +2,7 @@ package FitMate.FitMateBackend.workout.dto;
 
 import FitMate.FitMateBackend.consts.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.domain.Machine;
+import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import java.util.ArrayList;
 import java.util.List;

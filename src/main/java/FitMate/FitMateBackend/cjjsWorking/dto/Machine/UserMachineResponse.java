@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.cjjsWorking.dto.Machine;
 
-import FitMate.FitMateBackend.domain.Machine;
+import FitMate.FitMateBackend.machine.entity.Machine;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

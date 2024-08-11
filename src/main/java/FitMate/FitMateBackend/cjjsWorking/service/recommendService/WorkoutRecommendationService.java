@@ -2,24 +2,24 @@ package FitMate.FitMateBackend.cjjsWorking.service.recommendService;
 
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
 import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutRecommendationRequest;
-import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.CustomException;
-import FitMate.FitMateBackend.cjjsWorking.repository.*;
+import FitMate.FitMateBackend.cjjsWorking.repository.BodyPartRepository;
+import FitMate.FitMateBackend.cjjsWorking.repository.MachineRepository;
 import FitMate.FitMateBackend.cjjsWorking.repository.recommend.RecommendedWorkoutRepository;
 import FitMate.FitMateBackend.cjjsWorking.repository.recommend.WorkoutRecommendationRepository;
-import FitMate.FitMateBackend.workout.repository.WorkoutRepository;
-import FitMate.FitMateBackend.workout.service.WorkoutServiceImpl;
 import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.domain.Machine;
 import FitMate.FitMateBackend.domain.User;
-import FitMate.FitMateBackend.workout.entity.Workout;
 import FitMate.FitMateBackend.domain.recommendation.RecommendedWorkout;
 import FitMate.FitMateBackend.domain.recommendation.WorkoutRecommendation;
+import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.exception.exceptions.CustomException;
+import FitMate.FitMateBackend.machine.entity.Machine;
+import FitMate.FitMateBackend.workout.entity.Workout;
+import FitMate.FitMateBackend.workout.repository.WorkoutRepository;
+import FitMate.FitMateBackend.workout.service.WorkoutServiceImpl;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.admin.machine;
 
-import FitMate.FitMateBackend.domain.Machine;
 import FitMate.FitMateBackend.machine.dto.MachineResponse;
+import FitMate.FitMateBackend.machine.entity.Machine;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

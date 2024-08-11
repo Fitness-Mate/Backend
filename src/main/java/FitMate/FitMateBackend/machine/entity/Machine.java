@@ -1,13 +1,20 @@
-package FitMate.FitMateBackend.domain;
+package FitMate.FitMateBackend.machine.entity;
 
+import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Getter
@@ -18,6 +25,9 @@ public class Machine {
     @Column(name = "machine_id")
     private Long id;
 
+    private String koreanName;
+    private String englishName;
+
     @JsonIgnore
     @ManyToMany(mappedBy = "machines")
     private List<BodyPart> bodyParts = new ArrayList<>();
@@ -26,8 +36,13 @@ public class Machine {
     @ManyToMany(mappedBy = "machines")
     private List<Workout> workouts = new ArrayList<>();
 
-    private String englishName;
-    private String koreanName;
+    @CreatedDate
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(name = "modified_at")
+    private LocalDateTime modifiedAt;
 
     public void update(String englishName, String koreanName) {
         this.englishName = englishName;

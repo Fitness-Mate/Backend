@@ -1,12 +1,11 @@
 package FitMate.FitMateBackend.cjjsWorking.dto.Machine;
 
 import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.domain.Machine;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import FitMate.FitMateBackend.machine.entity.Machine;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor

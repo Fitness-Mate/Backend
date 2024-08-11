@@ -1,14 +1,18 @@
 package FitMate.FitMateBackend.domain.recommendation;
 
-import FitMate.FitMateBackend.domain.*;
+import FitMate.FitMateBackend.domain.BodyData;
+import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.domain.User;
+import FitMate.FitMateBackend.machine.entity.Machine;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import nonapi.io.github.classgraph.json.JSONUtils;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter

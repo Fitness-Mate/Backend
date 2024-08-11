@@ -2,10 +2,13 @@ package FitMate.FitMateBackend.admin.machine;
 
 import static FitMate.FitMateBackend.common.ApiResponseUtil.success;
 
+import FitMate.FitMateBackend.cjjsWorking.dto.Machine.MachineRequest;
 import FitMate.FitMateBackend.common.ApiPageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,10 +19,10 @@ public class AdminMachineController {
 
     private final AdminMachineService adminMachineService;
 
-//    @PostMapping("/machines") //운동기구 생성 (TEST 완료)
-//    public ResponseEntity<String> saveMachine(@RequestBody MachineRequest request) {
-//        return machineService.saveMachine(request);
-//    }
+    @PostMapping("")
+    public String saveMachine(@RequestBody MachineRequest request) {
+        return success();
+    }
 //
 //    @GetMapping("/machines/{machineId}") //운동기구 단일조회 (TEST 완료)
 //    public ResponseEntity<?> findMachine(@PathVariable("machineId") Long machineId) {
