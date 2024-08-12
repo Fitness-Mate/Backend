@@ -8,20 +8,19 @@ import FitMate.FitMateBackend.chanhaleWorking.repository.RecommendedSupplementRe
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRecommendationRepository;
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRepository;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.exception.errorcodes.RecommendErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.RecommendException;
 import FitMate.FitMateBackend.cjjsWorking.service.apiService.DeepLTranslateService;
-import FitMate.FitMateBackend.consts.ServiceConst;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.common.exception.errorcodes.RecommendErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.RecommendException;
 import FitMate.FitMateBackend.domain.User;
 import FitMate.FitMateBackend.domain.recommendation.RecommendedSupplement;
 import FitMate.FitMateBackend.domain.recommendation.SupplementRecommendation;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

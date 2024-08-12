@@ -5,8 +5,10 @@ import static FitMate.FitMateBackend.common.ApiResponseUtil.success;
 import FitMate.FitMateBackend.cjjsWorking.dto.Machine.MachineRequest;
 import FitMate.FitMateBackend.common.ApiPageRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +37,9 @@ public class AdminMachineController {
 //        return machineService.updateMachine(machineId, request);
 //    }
 //
-//    @DeleteMapping("/machines/{machineId}") //운동기구 삭제 (TEST 완료)
-//    public ResponseEntity<String> deleteMachine(@PathVariable("machineId") Long machineId) {
-//        return machineService.removeMachine(machineId);
-//    }
-
+    @DeleteMapping("/{id}")
+    public String deleteMachine(@PathVariable("id") Long id) {
+        adminMachineService.delete(id);
+        return success();
+    }
 }

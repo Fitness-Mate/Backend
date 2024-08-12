@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.cjjsWorking.dto.workout;
 
-import FitMate.FitMateBackend.consts.ServiceConst;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.domain.recommendation.RecommendedWorkout;
 import FitMate.FitMateBackend.machine.entity.Machine;

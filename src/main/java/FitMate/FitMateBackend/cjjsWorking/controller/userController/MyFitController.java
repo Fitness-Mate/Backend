@@ -10,27 +10,33 @@ import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutCreateReq
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutReadAllResponse;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutSearchResponse;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutUpdateRequest;
-import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.CustomException;
-import FitMate.FitMateBackend.workout.repository.WorkoutRepository;
 import FitMate.FitMateBackend.cjjsWorking.service.MyFitService;
 import FitMate.FitMateBackend.cjjsWorking.service.RoutineService;
-import FitMate.FitMateBackend.workout.service.WorkoutServiceImpl;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
-import FitMate.FitMateBackend.consts.ServiceConst;
-import FitMate.FitMateBackend.domain.myfit.MySupplement;
-import FitMate.FitMateBackend.domain.routine.Routine;
-import FitMate.FitMateBackend.workout.entity.Workout;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.domain.myfit.MyFit;
+import FitMate.FitMateBackend.domain.myfit.MySupplement;
 import FitMate.FitMateBackend.domain.myfit.MyWorkout;
+import FitMate.FitMateBackend.domain.routine.Routine;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.workout.entity.Workout;
+import FitMate.FitMateBackend.workout.repository.WorkoutRepository;
+import FitMate.FitMateBackend.workout.service.WorkoutServiceImpl;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor

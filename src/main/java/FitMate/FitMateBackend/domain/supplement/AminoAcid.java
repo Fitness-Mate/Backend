@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.domain.supplement;
 
 import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementForm;
-import FitMate.FitMateBackend.consts.ServiceConst;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;

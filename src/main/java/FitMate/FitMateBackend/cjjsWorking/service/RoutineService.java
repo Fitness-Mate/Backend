@@ -2,21 +2,20 @@ package FitMate.FitMateBackend.cjjsWorking.service;
 
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.RoutineSetData;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.SupplementRoutineUpdateRequest;
-import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.cjjsWorking.repository.RoutineRepository;
-import FitMate.FitMateBackend.consts.ServiceConst;
-import FitMate.FitMateBackend.domain.routine.Routine;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.domain.User;
+import FitMate.FitMateBackend.domain.routine.Routine;
 import FitMate.FitMateBackend.domain.routine.SupplementRoutine;
 import FitMate.FitMateBackend.domain.routine.WorkoutRoutine;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

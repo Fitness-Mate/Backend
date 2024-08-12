@@ -1,9 +1,11 @@
 package FitMate.FitMateBackend.chanhaleWorking.dto;
 
-import FitMate.FitMateBackend.util.S3Util;
-import FitMate.FitMateBackend.consts.ServiceConst;
-import FitMate.FitMateBackend.domain.supplement.*;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.domain.supplement.Gainer;
+import FitMate.FitMateBackend.domain.supplement.Protein;
+import FitMate.FitMateBackend.domain.supplement.SupplementType;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.util.S3Util;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

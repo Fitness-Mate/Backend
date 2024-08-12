@@ -1,21 +1,14 @@
 package FitMate.FitMateBackend.chanhaleWorking.config.argumentresolver;
 
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
-import FitMate.FitMateBackend.chanhaleWorking.service.LoginService;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
-import FitMate.FitMateBackend.consts.SessionConst;
-import FitMate.FitMateBackend.domain.User;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
-
-import java.lang.reflect.Member;
-import java.util.Arrays;
 
 @Slf4j
 public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver {

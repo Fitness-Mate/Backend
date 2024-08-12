@@ -1,13 +1,13 @@
 package FitMate.FitMateBackend.chanhaleWorking.service;
 
+import FitMate.FitMateBackend.bodypart.service.storageService.RedisCacheService;
 import FitMate.FitMateBackend.chanhaleWorking.form.login.LoginForm;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.exception.errorcodes.AuthErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.AuthException;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.AuthResponse;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.ExtraClaims;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.RedisCacheService;
+import FitMate.FitMateBackend.common.exception.errorcodes.AuthErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.AuthException;
 import FitMate.FitMateBackend.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

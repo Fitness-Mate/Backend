@@ -1,8 +1,8 @@
 package FitMate.FitMateBackend.cjjsWorking.config.securityFilter;
 
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
-import FitMate.FitMateBackend.exception.errorcodes.JwtFilterErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.JwtFilterException;
+import FitMate.FitMateBackend.common.exception.errorcodes.JwtFilterErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.JwtFilterException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

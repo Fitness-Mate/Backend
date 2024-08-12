@@ -1,8 +1,8 @@
 package FitMate.FitMateBackend.util;
 
-import FitMate.FitMateBackend.consts.ServiceConst;
-import FitMate.FitMateBackend.exception.ApiErrorCode;
-import FitMate.FitMateBackend.exception.ApiException;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.common.exception.ApiErrorCode;
+import FitMate.FitMateBackend.common.exception.ApiException;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import java.util.Objects;

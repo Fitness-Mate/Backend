@@ -1,14 +1,13 @@
 package FitMate.FitMateBackend.cjjsWorking.service.recommendService;
 
-import FitMate.FitMateBackend.exception.errorcodes.RecommendErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.RecommendException;
 import FitMate.FitMateBackend.cjjsWorking.repository.recommend.RecommendedWorkoutRepository;
+import FitMate.FitMateBackend.common.exception.errorcodes.RecommendErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.RecommendException;
 import FitMate.FitMateBackend.domain.recommendation.RecommendedWorkout;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)

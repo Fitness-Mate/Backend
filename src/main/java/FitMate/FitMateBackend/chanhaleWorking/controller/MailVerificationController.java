@@ -1,22 +1,30 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller;
 
-import FitMate.FitMateBackend.chanhaleWorking.config.ChatGptConfig;
-import FitMate.FitMateBackend.chanhaleWorking.dto.ChatGptRequestDto;
-import FitMate.FitMateBackend.chanhaleWorking.dto.ChatGptResponseDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.GeneralResponseDto;
-import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.*;
+import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.CodeVerifyingRequestDto;
+import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.PurgeRequestDto;
+import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.SendNewPasswordDto;
+import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.UuidDto;
+import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.UuidVerifyingRequestDto;
+import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.VerificationRequestDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.mailServer.CodeVerifyingRequestForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.mailServer.UuidVerifyingRequestForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.mailServer.VerificationRequestForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.UserService;
-import FitMate.FitMateBackend.consts.ServiceConst;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.*;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j

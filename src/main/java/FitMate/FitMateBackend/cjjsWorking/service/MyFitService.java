@@ -4,22 +4,21 @@ import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRepository;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.mySupplement.MySupplementUpdateRequest;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutUpdateRequest;
 import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutSearchCond;
-import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.cjjsWorking.repository.MyFitRepository;
 import FitMate.FitMateBackend.cjjsWorking.repository.RoutineRepository;
-import FitMate.FitMateBackend.workout.repository.WorkoutRepository;
-import FitMate.FitMateBackend.workout.entity.Workout;
+import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.domain.myfit.MyFit;
 import FitMate.FitMateBackend.domain.myfit.MySupplement;
 import FitMate.FitMateBackend.domain.myfit.MyWorkout;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.workout.entity.Workout;
+import FitMate.FitMateBackend.workout.repository.WorkoutRepository;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

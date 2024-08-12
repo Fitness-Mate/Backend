@@ -1,16 +1,27 @@
 package FitMate.FitMateBackend.cjjsWorking.service.authService;
 
+import FitMate.FitMateBackend.bodypart.service.storageService.RedisCacheService;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.exception.errorcodes.JwtFilterErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.CustomException;
-import FitMate.FitMateBackend.exception.exceptions.JwtFilterException;
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.RedisCacheService;
+import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.common.exception.errorcodes.JwtFilterErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
+import FitMate.FitMateBackend.common.exception.exceptions.JwtFilterException;
 import FitMate.FitMateBackend.domain.User;
-import io.jsonwebtoken.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
+import java.security.Key;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.Function;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,10 +29,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
-import java.security.Key;
-import java.util.*;
-import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor

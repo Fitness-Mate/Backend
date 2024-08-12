@@ -1,16 +1,15 @@
 package FitMate.FitMateBackend.chanhaleWorking.repository;
 
-import FitMate.FitMateBackend.consts.ServiceConst;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.domain.recommendation.Recommendation;
 import FitMate.FitMateBackend.domain.recommendation.SupplementRecommendation;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.List;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-import java.util.Objects;
 
 @Repository
 @RequiredArgsConstructor

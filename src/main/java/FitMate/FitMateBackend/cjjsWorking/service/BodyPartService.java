@@ -1,14 +1,10 @@
 package FitMate.FitMateBackend.cjjsWorking.service;
 
-import FitMate.FitMateBackend.bodypart.dto.BodyPartResponse;
 import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartDto;
-import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartRequest;
 import FitMate.FitMateBackend.cjjsWorking.repository.BodyPartRepository;
+import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.exception.exceptions.CustomException;
-import FitMate.FitMateBackend.machine.entity.Machine;
-import FitMate.FitMateBackend.workout.entity.Workout;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
@@ -23,32 +19,6 @@ public class BodyPartService {
 
     private final BodyPartRepository bodyPartRepository;
 
-    @Transactional
-    public ResponseEntity<String> updateBodyPart(Long bodyPartId, BodyPartRequest request) {
-        if(!this.checkBodyPartNameDuplicate(request.getKoreanName(), request.getEnglishName()))
-            throw new CustomException(CustomErrorCode.BODY_PART_ALREADY_EXIST_EXCEPTION);
-
-        BodyPart findBodyPart = bodyPartRepository.findById(bodyPartId).orElse(null);
-        if(findBodyPart == null)
-            throw new CustomException(CustomErrorCode.BODY_PART_NOT_FOUND_EXCEPTION);
-
-        findBodyPart.update(request.getEnglishName(), request.getKoreanName());
-        return ResponseEntity.ok("[" + findBodyPart.getKoreanName() + ":" + findBodyPart.getEnglishName() + "] 수정 완료");
-    }
-
-    public ResponseEntity<?> findOne(Long bodyPartId) {
-        BodyPart findBodyPart = bodyPartRepository.findById(bodyPartId).orElse(null);
-        if(findBodyPart == null)
-            throw new CustomException(CustomErrorCode.BODY_PART_NOT_FOUND_EXCEPTION);
-
-        return ResponseEntity.ok(new BodyPartResponse(findBodyPart));
-    }
-
-    public boolean checkBodyPartNameDuplicate(String koreanName, String englishName) {
-        BodyPart bp1 = bodyPartRepository.findByKoreanName(koreanName).orElse(null);
-        BodyPart bp2 = bodyPartRepository.findByEnglishName(englishName).orElse(null);
-        return (bp1 == null && bp2 == null);
-    }
 
     public BodyPart findByKoreanName(String koreanName) {
         return bodyPartRepository.findByKoreanName(koreanName).orElse(null);
@@ -69,27 +39,4 @@ public class BodyPartService {
                 .collect(Collectors.toList()));
     }
     //Overloading
-
-    @Transactional
-    public ResponseEntity<String> removeBodyPart(Long bodyPartId) {
-        BodyPart findBodyPart = bodyPartRepository.findById(bodyPartId).orElse(null);
-        if(findBodyPart == null)
-            throw new CustomException(CustomErrorCode.BODY_PART_NOT_FOUND_EXCEPTION);
-
-        //remove related machine
-        List<Machine> machines = findBodyPart.getMachines();
-        for (Machine machine : machines) {
-            machine.getBodyParts().remove(findBodyPart);
-        }
-
-        //remove related workout
-        List<Workout> workouts = findBodyPart.getWorkouts();
-        for (Workout workout : workouts) {
-            workout.getBodyParts().remove(findBodyPart);
-        }
-
-        bodyPartRepository.remove(findBodyPart);
-        return ResponseEntity.ok("[" + findBodyPart.getKoreanName() + ":" + findBodyPart.getEnglishName() + "] 삭제 완료");
-    }
-
 }

@@ -78,7 +78,6 @@ public class Workout {
     public void addMachine(Machine machine) {
         this.machines.add(machine);
     }
-
     public void removeMachine(Machine machine) {
         this.machines.remove(machine);
     }

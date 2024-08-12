@@ -2,7 +2,7 @@ package FitMate.FitMateBackend.machine.controller;
 
 import FitMate.FitMateBackend.cjjsWorking.dto.Machine.UserMachineRequest;
 import FitMate.FitMateBackend.cjjsWorking.dto.Machine.UserMachineResponse;
-import FitMate.FitMateBackend.cjjsWorking.service.MachineService;
+import FitMate.FitMateBackend.machine.service.MachineService;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;

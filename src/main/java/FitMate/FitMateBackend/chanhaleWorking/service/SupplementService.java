@@ -5,17 +5,20 @@ import FitMate.FitMateBackend.chanhaleWorking.dto.SupplementFlavorDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementSearchForm;
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRepository;
-import FitMate.FitMateBackend.util.S3Util;
-import FitMate.FitMateBackend.consts.ServiceConst;
-import FitMate.FitMateBackend.domain.supplement.*;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.domain.supplement.AminoAcid;
+import FitMate.FitMateBackend.domain.supplement.Gainer;
+import FitMate.FitMateBackend.domain.supplement.Other;
+import FitMate.FitMateBackend.domain.supplement.Protein;
+import FitMate.FitMateBackend.domain.supplement.SupplementType;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.util.S3Util;
+import java.io.IOException;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.io.IOException;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
