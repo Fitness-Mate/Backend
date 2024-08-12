@@ -75,6 +75,9 @@ public class Workout {
     public void addBodypart(BodyPart bodyPart) {
         this.bodyParts.add(bodyPart);
     }
+    public void removeBodypart(BodyPart bodyPart) {
+        this.bodyParts.remove(bodyPart);
+    }
     public void addMachine(Machine machine) {
         this.machines.add(machine);
     }

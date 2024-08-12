@@ -57,11 +57,13 @@ public class Machine {
     public void addWorkout(Workout workout) {
         this.workouts.add(workout);
     }
+    public void removeWorkout(Workout workout) {
+        this.workouts.remove(workout);
+    }
     public void addBodyPart(BodyPart bodyPart) {
         this.bodyParts.add(bodyPart);
     }
-
-    public void removeWorkout(Workout workout) {
-        this.workouts.remove(workout);
+    public void removeBodyPart(BodyPart bodyPart) {
+        this.bodyParts.remove(bodyPart);
     }
 }

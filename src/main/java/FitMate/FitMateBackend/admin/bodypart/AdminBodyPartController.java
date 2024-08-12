@@ -3,11 +3,16 @@ package FitMate.FitMateBackend.admin.bodypart;
 
 import static FitMate.FitMateBackend.common.ApiResponseUtil.success;
 
+import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartRequest;
 import FitMate.FitMateBackend.common.ApiPageRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,10 +24,11 @@ public class AdminBodyPartController {
 
     private final AdminBodyPartService adminBodyPartService;
 
-//    @PostMapping("/bodyParts") //운동부위 등록 (TEST 완료)
-//    public ResponseEntity<String> saveBodyPart(@RequestBody BodyPartRequest request) {
-//        return bodyPartService.saveBodyPart(request);
-//    }
+    @PostMapping("")
+    public String create(@RequestBody BodyPartRequest request) {
+        adminBodyPartService.create(request);
+        return success();
+    }
 //
 //    @GetMapping("/bodyParts/{bodyPartId}") //운동부위 단일조회 (TEST 완료)
 //    public ResponseEntity<?> findBodyPart(@PathVariable("bodyPartId") Long bodyPartId) {
@@ -40,8 +46,9 @@ public class AdminBodyPartController {
 //        return bodyPartService.updateBodyPart(bodyPartId, request);
 //    }
 //
-//    @DeleteMapping("/bodyParts/{bodyPartId}") //운동부위 삭제 (TEST 완료)
-//    public ResponseEntity<String> removeBodyPart(@PathVariable("bodyPartId") Long bodyPartId) {
-//        return bodyPartService.removeBodyPart(bodyPartId);
-
+    @DeleteMapping("/{id}") //운동부위 삭제 (TEST 완료)
+    public String delete(@PathVariable("id") Long id) {
+        adminBodyPartService.delete(id);
+        return success();
+    }
 }
