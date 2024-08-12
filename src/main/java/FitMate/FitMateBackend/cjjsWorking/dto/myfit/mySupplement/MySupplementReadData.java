@@ -2,10 +2,10 @@ package FitMate.FitMateBackend.cjjsWorking.dto.myfit.mySupplement;
 
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.domain.myfit.MySupplement;
-import FitMate.FitMateBackend.domain.supplement.AminoAcid;
-import FitMate.FitMateBackend.domain.supplement.Gainer;
-import FitMate.FitMateBackend.domain.supplement.Other;
-import FitMate.FitMateBackend.domain.supplement.Protein;
+import FitMate.FitMateBackend.supplement.entity.AminoAcid;
+import FitMate.FitMateBackend.supplement.entity.Gainer;
+import FitMate.FitMateBackend.supplement.entity.Other;
+import FitMate.FitMateBackend.supplement.entity.Protein;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
 import FitMate.FitMateBackend.util.S3Util;
 import lombok.AllArgsConstructor;

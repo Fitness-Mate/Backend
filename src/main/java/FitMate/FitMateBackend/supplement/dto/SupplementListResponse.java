@@ -1,17 +1,17 @@
-package FitMate.FitMateBackend.chanhaleWorking.dto;
+package FitMate.FitMateBackend.supplement.dto;
 
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.supplement.Gainer;
-import FitMate.FitMateBackend.domain.supplement.Protein;
-import FitMate.FitMateBackend.domain.supplement.SupplementType;
+import FitMate.FitMateBackend.supplement.entity.Gainer;
+import FitMate.FitMateBackend.supplement.entity.Protein;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.supplement.entity.SupplementType;
 import FitMate.FitMateBackend.util.S3Util;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class SupplementListDto {
+public class SupplementListResponse {
 
     private Long id;
     private String koreanCompanyName;
@@ -25,9 +25,9 @@ public class SupplementListDto {
     private String imageURL;
     private String source;
     private String description;
-//    private UrlResource image;
+    private String createdAt;
 
-    public SupplementListDto(Supplement supplement){
+    public SupplementListResponse(Supplement supplement){
         this.id = supplement.getId();
         this.koreanName = getSupplementName(supplement.getKoreanName());
         this.koreanCompanyName = getCompanyName(supplement.getKoreanName());
@@ -36,7 +36,6 @@ public class SupplementListDto {
         this.price = supplement.getPrice();
         this.servings = supplement.getServings();
         this.imageURL = S3Util.getAccessURL(ServiceConst.S3_DIR_SUPPLEMENT, supplement.getImageName());
-//        this.image = new UrlResource("file:" + FileStoreService.getFullPath(supplement.getImagePath()));
         this.flavor = supplement.getFlavor();
         this.description = supplement.getDescription();
         if (supplement.getType() == SupplementType.Gainer) {
@@ -53,6 +52,7 @@ public class SupplementListDto {
         if (supplement.getType() == SupplementType.Other) {
             this.supplementType = "Other";
         }
+        this.createdAt = supplement.getCreatedAt().toString();
     }
 
     /**

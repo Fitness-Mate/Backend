@@ -102,7 +102,7 @@ public class AdminWorkoutService {
      *
      * @param pageable 페이징 정보
      */
-    public PageImpl<WorkoutResponse> readList(Pageable pageable) {
+    public PageImpl<WorkoutResponse> readAll(Pageable pageable) {
         Page<Workout> workoutList = adminWorkoutRepository.findAll(pageable);
         return new PageImpl<>(
             workoutList.stream().map(WorkoutResponse::new).toList(),

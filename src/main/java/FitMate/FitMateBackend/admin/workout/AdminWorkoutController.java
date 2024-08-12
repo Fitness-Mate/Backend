@@ -39,7 +39,7 @@ public class AdminWorkoutController {
 
     @GetMapping("")
     public String readAll(@ModelAttribute ApiPageRequest request) {
-        return success(adminWorkoutService.readList(request.makePageable()));
+        return success(adminWorkoutService.readAll(request.makePageable()));
     }
 
     @PutMapping("/{id}")

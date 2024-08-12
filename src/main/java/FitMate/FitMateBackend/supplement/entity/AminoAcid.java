@@ -1,8 +1,7 @@
-package FitMate.FitMateBackend.domain.supplement;
+package FitMate.FitMateBackend.supplement.entity;
 
 import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementForm;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.supplement.entity.Supplement;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -15,8 +14,6 @@ import lombok.Setter;
 @DiscriminatorValue("AminoAcid")
 @NoArgsConstructor
 public class AminoAcid extends Supplement {
-
-
     private Float leucine;
     private Float isoLeucine;
     private Float valine;
@@ -29,6 +26,7 @@ public class AminoAcid extends Supplement {
     private Float threonine;
     private Float histidine;
     private Float tryptophan;
+
     public AminoAcid(SupplementForm supplementForm) {
         super(supplementForm);
         this.leucine = supplementForm.getLeucine();
