@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.service;
 
-import FitMate.FitMateBackend.chanhaleWorking.config.ChatGptConfig;
+import FitMate.FitMateBackend.common.configuration.ChatGptConfig;
 import FitMate.FitMateBackend.chanhaleWorking.dto.ChatGptRequestDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.ChatGptResponseDto;
 import FitMate.FitMateBackend.cjjsWorking.service.recommendService.WorkoutRecommendationService;

@@ -1,13 +1,11 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller;
 
-import FitMate.FitMateBackend.chanhaleWorking.config.argumentresolver.Login;
+import FitMate.FitMateBackend.common.configuration.argumentresolver.Login;
 import FitMate.FitMateBackend.chanhaleWorking.dto.BodyDataDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.bodyData.BodyDataForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.BodyDataService;
-import FitMate.FitMateBackend.chanhaleWorking.service.UserService;
 import FitMate.FitMateBackend.domain.BodyData;
-import FitMate.FitMateBackend.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

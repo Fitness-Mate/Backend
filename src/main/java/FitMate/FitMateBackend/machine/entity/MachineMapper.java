@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.machine.entity;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.Machine.MachineRequest;
+import FitMate.FitMateBackend.machine.dto.MachineRequest;
 import java.util.ArrayList;
 
 public class MachineMapper {

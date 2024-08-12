@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller;
 
-import FitMate.FitMateBackend.chanhaleWorking.config.argumentresolver.Login;
+import FitMate.FitMateBackend.common.configuration.argumentresolver.Login;
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.UuidVerifyingRequestDto;

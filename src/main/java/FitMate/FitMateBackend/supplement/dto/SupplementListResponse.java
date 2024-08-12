@@ -5,7 +5,7 @@ import FitMate.FitMateBackend.supplement.entity.Gainer;
 import FitMate.FitMateBackend.supplement.entity.Protein;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
 import FitMate.FitMateBackend.supplement.entity.SupplementType;
-import FitMate.FitMateBackend.util.S3Util;
+import FitMate.FitMateBackend.common.util.S3Util;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

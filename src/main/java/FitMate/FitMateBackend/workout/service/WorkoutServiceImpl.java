@@ -1,15 +1,15 @@
 package FitMate.FitMateBackend.workout.service;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutSearchCond;
-import FitMate.FitMateBackend.cjjsWorking.repository.BodyPartRepository;
-import FitMate.FitMateBackend.cjjsWorking.repository.MachineRepository;
-import FitMate.FitMateBackend.cjjsWorking.service.BodyPartService;
+import FitMate.FitMateBackend.workout.dto.WorkoutSearchCond;
+import FitMate.FitMateBackend.bodypart.repository.BodyPartRepository;
+import FitMate.FitMateBackend.machine.repository.MachineRepository;
+import FitMate.FitMateBackend.bodypart.service.BodyPartService;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
 import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
-import FitMate.FitMateBackend.util.S3Util;
+import FitMate.FitMateBackend.common.util.S3Util;
 import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
 import FitMate.FitMateBackend.workout.dto.WorkoutResponse;
 import FitMate.FitMateBackend.workout.entity.Workout;

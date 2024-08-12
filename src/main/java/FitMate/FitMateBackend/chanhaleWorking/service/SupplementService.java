@@ -12,7 +12,7 @@ import FitMate.FitMateBackend.supplement.entity.Other;
 import FitMate.FitMateBackend.supplement.entity.Protein;
 import FitMate.FitMateBackend.supplement.entity.SupplementType;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
-import FitMate.FitMateBackend.util.S3Util;
+import FitMate.FitMateBackend.common.util.S3Util;
 import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

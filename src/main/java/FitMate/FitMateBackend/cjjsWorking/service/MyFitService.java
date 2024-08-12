@@ -3,7 +3,7 @@ package FitMate.FitMateBackend.cjjsWorking.service;
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRepository;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.mySupplement.MySupplementUpdateRequest;
 import FitMate.FitMateBackend.cjjsWorking.dto.myfit.myWorkout.MyWorkoutUpdateRequest;
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutSearchCond;
+import FitMate.FitMateBackend.workout.dto.WorkoutSearchCond;
 import FitMate.FitMateBackend.cjjsWorking.repository.MyFitRepository;
 import FitMate.FitMateBackend.cjjsWorking.repository.RoutineRepository;
 import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;

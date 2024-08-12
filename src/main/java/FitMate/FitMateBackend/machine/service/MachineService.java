@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.machine.service;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.Machine.MachineDto;
-import FitMate.FitMateBackend.cjjsWorking.repository.MachineRepository;
+import FitMate.FitMateBackend.machine.dto.MachineDto;
+import FitMate.FitMateBackend.machine.repository.MachineRepository;
 import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
 import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
 import FitMate.FitMateBackend.machine.entity.Machine;

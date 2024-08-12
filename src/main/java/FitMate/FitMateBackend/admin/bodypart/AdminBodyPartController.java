@@ -3,7 +3,7 @@ package FitMate.FitMateBackend.admin.bodypart;
 
 import static FitMate.FitMateBackend.common.ApiResponseUtil.success;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartRequest;
+import FitMate.FitMateBackend.bodypart.dto.BodyPartRequest;
 import FitMate.FitMateBackend.common.ApiPageRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

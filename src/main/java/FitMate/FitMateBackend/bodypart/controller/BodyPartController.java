@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.bodypart.controller;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartsResponse;
-import FitMate.FitMateBackend.cjjsWorking.service.BodyPartService;
+import FitMate.FitMateBackend.bodypart.dto.BodyPartsResponse;
+import FitMate.FitMateBackend.bodypart.service.BodyPartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

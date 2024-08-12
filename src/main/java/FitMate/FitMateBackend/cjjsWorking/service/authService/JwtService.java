@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.cjjsWorking.service.authService;
 
-import FitMate.FitMateBackend.bodypart.service.storageService.RedisCacheService;
+import FitMate.FitMateBackend.cjjsWorking.service.RedisCacheService;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
 import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
 import FitMate.FitMateBackend.common.exception.errorcodes.JwtFilterErrorCode;

@@ -1,7 +1,5 @@
 package FitMate.FitMateBackend.common.configuration;
 
-import FitMate.FitMateBackend.cjjsWorking.config.securityFilter.JwtExceptionFilter;
-import FitMate.FitMateBackend.cjjsWorking.config.securityFilter.JwtFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

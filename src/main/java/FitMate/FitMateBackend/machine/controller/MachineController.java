@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.machine.controller;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.Machine.UserMachineRequest;
-import FitMate.FitMateBackend.cjjsWorking.dto.Machine.UserMachineResponse;
+import FitMate.FitMateBackend.machine.dto.UserMachineRequest;
+import FitMate.FitMateBackend.machine.dto.UserMachineResponse;
 import FitMate.FitMateBackend.machine.service.MachineService;
 import java.util.List;
 import java.util.stream.Collectors;

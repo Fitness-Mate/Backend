@@ -7,7 +7,7 @@ import FitMate.FitMateBackend.common.exception.ApiErrorCode;
 import FitMate.FitMateBackend.common.exception.ApiException;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
-import FitMate.FitMateBackend.util.S3Util;
+import FitMate.FitMateBackend.common.util.S3Util;
 import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
 import FitMate.FitMateBackend.workout.dto.WorkoutResponse;
 import FitMate.FitMateBackend.workout.entity.Workout;

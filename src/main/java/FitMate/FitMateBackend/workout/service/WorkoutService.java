@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.workout.service;
 
 import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutSearchCond;
+import FitMate.FitMateBackend.workout.dto.WorkoutSearchCond;
 import FitMate.FitMateBackend.workout.dto.WorkoutResponse;
 import java.util.List;
 

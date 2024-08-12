@@ -2,7 +2,7 @@ package FitMate.FitMateBackend.admin.machine;
 
 import static FitMate.FitMateBackend.common.ApiResponseUtil.success;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.Machine.MachineRequest;
+import FitMate.FitMateBackend.machine.dto.MachineRequest;
 import FitMate.FitMateBackend.common.ApiPageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;

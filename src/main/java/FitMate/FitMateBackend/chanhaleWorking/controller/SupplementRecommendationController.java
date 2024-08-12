@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller;
 
 
-import FitMate.FitMateBackend.chanhaleWorking.config.argumentresolver.Login;
+import FitMate.FitMateBackend.common.configuration.argumentresolver.Login;
 import FitMate.FitMateBackend.chanhaleWorking.dto.SupplementRecommendationDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.SupplementRecommendationListDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
@@ -9,9 +9,7 @@ import FitMate.FitMateBackend.chanhaleWorking.form.recommendation.SupplementReco
 import FitMate.FitMateBackend.chanhaleWorking.service.ChatGptService;
 import FitMate.FitMateBackend.chanhaleWorking.service.SupplementRecommendationService;
 import FitMate.FitMateBackend.chanhaleWorking.service.SupplementService;
-import FitMate.FitMateBackend.cjjsWorking.service.apiService.DeepLTranslateService;
 import FitMate.FitMateBackend.domain.Purpose;
-import FitMate.FitMateBackend.domain.User;
 import FitMate.FitMateBackend.domain.recommendation.SupplementRecommendation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

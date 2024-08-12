@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.admin.bodypart;
 
 import FitMate.FitMateBackend.bodypart.dto.BodyPartResponse;
-import FitMate.FitMateBackend.cjjsWorking.dto.bodyPart.BodyPartRequest;
+import FitMate.FitMateBackend.bodypart.dto.BodyPartRequest;
 import FitMate.FitMateBackend.common.exception.ApiErrorCode;
 import FitMate.FitMateBackend.common.exception.ApiException;
 import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;

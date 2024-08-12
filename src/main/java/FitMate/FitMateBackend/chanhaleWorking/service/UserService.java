@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.service;
 
-import FitMate.FitMateBackend.bodypart.service.storageService.RedisCacheService;
+import FitMate.FitMateBackend.cjjsWorking.service.RedisCacheService;
 import FitMate.FitMateBackend.chanhaleWorking.dto.GeneralResponseDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.user.RegisterForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.user.UpdateUserForm;

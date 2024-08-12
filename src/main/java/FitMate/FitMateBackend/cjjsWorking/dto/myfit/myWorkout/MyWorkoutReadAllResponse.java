@@ -4,7 +4,7 @@ import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.domain.myfit.MyWorkout;
 import FitMate.FitMateBackend.machine.entity.Machine;
-import FitMate.FitMateBackend.util.S3Util;
+import FitMate.FitMateBackend.common.util.S3Util;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import java.util.ArrayList;
 import java.util.List;

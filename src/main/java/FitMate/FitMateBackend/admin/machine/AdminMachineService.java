@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.admin.machine;
 
 import FitMate.FitMateBackend.admin.bodypart.AdminBodyPartRepository;
-import FitMate.FitMateBackend.cjjsWorking.dto.Machine.MachineRequest;
+import FitMate.FitMateBackend.machine.dto.MachineRequest;
 import FitMate.FitMateBackend.common.exception.ApiErrorCode;
 import FitMate.FitMateBackend.common.exception.ApiException;
 import FitMate.FitMateBackend.domain.BodyPart;

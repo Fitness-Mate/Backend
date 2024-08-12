@@ -1,9 +1,9 @@
 package FitMate.FitMateBackend.cjjsWorking.controller.userController;
 
 import FitMate.FitMateBackend.chanhaleWorking.service.ChatGptService;
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.RecommendedWorkoutResponse;
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutRecommendPageDto;
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutRecommendationRequest;
+import FitMate.FitMateBackend.workout.dto.RecommendedWorkoutResponse;
+import FitMate.FitMateBackend.workout.dto.WorkoutRecommendPageDto;
+import FitMate.FitMateBackend.workout.dto.WorkoutRecommendationRequest;
 import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
 import FitMate.FitMateBackend.cjjsWorking.service.recommendService.RecommendedWorkoutService;
 import FitMate.FitMateBackend.cjjsWorking.service.recommendService.WorkoutRecommendationService;

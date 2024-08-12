@@ -2,8 +2,8 @@ package FitMate.FitMateBackend.workout.repository;
 
 import static org.springframework.util.StringUtils.hasText;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutSearchCond;
-import FitMate.FitMateBackend.cjjsWorking.service.BodyPartService;
+import FitMate.FitMateBackend.workout.dto.WorkoutSearchCond;
+import FitMate.FitMateBackend.bodypart.service.BodyPartService;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
