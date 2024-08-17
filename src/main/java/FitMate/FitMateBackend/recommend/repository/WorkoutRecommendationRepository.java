@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.recommend.repository;
 
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.recommendation.QWorkoutRecommendation;
+import FitMate.FitMateBackend.recommend.entity.QWorkoutRecommendation;
 import FitMate.FitMateBackend.recommend.entity.WorkoutRecommendation;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
