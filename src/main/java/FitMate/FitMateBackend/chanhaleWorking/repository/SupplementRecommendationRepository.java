@@ -1,8 +1,8 @@
 package FitMate.FitMateBackend.chanhaleWorking.repository;
 
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.recommendation.Recommendation;
-import FitMate.FitMateBackend.domain.recommendation.SupplementRecommendation;
+import FitMate.FitMateBackend.recommend.entity.Recommendation;
+import FitMate.FitMateBackend.recommend.entity.SupplementRecommendation;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import java.util.List;

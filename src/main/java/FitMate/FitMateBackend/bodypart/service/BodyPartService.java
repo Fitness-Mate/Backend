@@ -1,10 +1,10 @@
 package FitMate.FitMateBackend.bodypart.service;
 
 import FitMate.FitMateBackend.bodypart.dto.BodyPartDto;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.bodypart.repository.BodyPartRepository;
 import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
 import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
-import FitMate.FitMateBackend.domain.BodyPart;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.bodypart.repository;
 
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.BodyPart;
 import jakarta.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;

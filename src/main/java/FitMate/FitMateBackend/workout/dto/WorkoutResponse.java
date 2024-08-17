@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.workout.dto;
 
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 package FitMate.FitMateBackend.machine.repository;
 
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.bodypart.service.BodyPartService;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.machine.entity.QMachine;
 import com.querydsl.core.BooleanBuilder;

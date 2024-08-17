@@ -1,7 +1,7 @@
 package FitMate.FitMateBackend.common.configuration.argumentresolver;
 
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
+import FitMate.FitMateBackend.common.auth.JwtService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;

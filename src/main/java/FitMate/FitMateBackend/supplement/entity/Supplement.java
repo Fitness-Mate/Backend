@@ -1,7 +1,8 @@
 package FitMate.FitMateBackend.supplement.entity;
 
-import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementForm;
 import FitMate.FitMateBackend.common.BaseEntity;
+import FitMate.FitMateBackend.supplement.dto.SupplementRequest;
+import FitMate.FitMateBackend.supplement.dto.SupplementRequestOld;
 import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
@@ -36,28 +37,28 @@ public abstract class Supplement extends BaseEntity {
     @Setter
     private String imageName;
 
-    public Supplement(SupplementForm supplementForm) {
-        this.englishName = supplementForm.getEnglishName();
-        this.koreanName = supplementForm.getKoreanName();
-        this.price = supplementForm.getPrice();
-        this.servings = supplementForm.getServings();
-        this.description = supplementForm.getDescription();
-        this.marketURL = supplementForm.getMarketURL();
-        this.flavor = supplementForm.getFlavor();
-        this.type = supplementForm.getSupplementType();
-        this.isCaptain = supplementForm.getIsCaptain();
+    public Supplement(SupplementRequest supplementRequest) {
+        this.englishName = supplementRequest.getEnglishName();
+        this.koreanName = supplementRequest.getKoreanName();
+        this.price = supplementRequest.getPrice();
+        this.servings = supplementRequest.getServings();
+        this.description = supplementRequest.getDescription();
+        this.marketURL = supplementRequest.getMarketURL();
+        this.flavor = supplementRequest.getFlavor();
+        this.type = supplementRequest.getSupplementType();
+        this.isCaptain = supplementRequest.getIsCaptain();
     }
 
-    public void updateFields(SupplementForm supplementForm) {
-        this.englishName = supplementForm.getEnglishName();
-        this.koreanName = supplementForm.getKoreanName();
-        this.price = supplementForm.getPrice();
-        this.servings = supplementForm.getServings();
-        this.description = supplementForm.getDescription();
-        this.marketURL = supplementForm.getMarketURL();
-        this.flavor = supplementForm.getFlavor();
-        this.type = supplementForm.getSupplementType();
-        this.isCaptain = supplementForm.getIsCaptain();
+    public void updateFields(SupplementRequestOld supplementRequestOld) {
+        this.englishName = supplementRequestOld.getEnglishName();
+        this.koreanName = supplementRequestOld.getKoreanName();
+        this.price = supplementRequestOld.getPrice();
+        this.servings = supplementRequestOld.getServings();
+        this.description = supplementRequestOld.getDescription();
+        this.marketURL = supplementRequestOld.getMarketURL();
+        this.flavor = supplementRequestOld.getFlavor();
+        this.type = supplementRequestOld.getSupplementType();
+        this.isCaptain = supplementRequestOld.getIsCaptain();
     }
 
     public abstract String createIntroduction();

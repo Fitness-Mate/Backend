@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.machine.entity;
 
-import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;

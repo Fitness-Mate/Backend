@@ -1,15 +1,18 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller;
 
-import FitMate.FitMateBackend.cjjsWorking.service.authService.AuthResponse;
 import FitMate.FitMateBackend.chanhaleWorking.form.login.LoginForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.LoginService;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
+import FitMate.FitMateBackend.common.auth.AuthResponse;
+import FitMate.FitMateBackend.common.auth.JwtService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 서비스의 Login 에 관련된 URL 처리하는 컨트롤러

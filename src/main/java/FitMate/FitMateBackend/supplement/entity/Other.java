@@ -1,7 +1,8 @@
 package FitMate.FitMateBackend.supplement.entity;
 
-import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementForm;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.supplement.dto.SupplementRequest;
+import FitMate.FitMateBackend.supplement.dto.SupplementRequestOld;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -15,9 +16,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Other extends Supplement {
     private String contains;
-    public Other(SupplementForm supplementForm) {
-        super(supplementForm);
-        this.contains = supplementForm.getContains();
+    public Other(SupplementRequest supplementRequest) {
+        super(supplementRequest);
+        this.contains = supplementRequest.getContains();
     }
     @Override
     public String createIntroduction() {
@@ -28,8 +29,8 @@ public class Other extends Supplement {
                 "servings: "+this.getServings()+"serving, "+
                 "contains: "+this.contains+"}";
     }
-    public void updateFields(SupplementForm supplementForm) {
-        super.updateFields(supplementForm);
-        this.contains = supplementForm.getContains();
+    public void updateFields(SupplementRequestOld supplementRequestOld) {
+        super.updateFields(supplementRequestOld);
+        this.contains = supplementRequestOld.getContains();
     }
 }

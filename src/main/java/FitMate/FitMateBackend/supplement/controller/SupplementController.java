@@ -1,11 +1,11 @@
 package FitMate.FitMateBackend.supplement.controller;
 
-import FitMate.FitMateBackend.chanhaleWorking.dto.SupplementDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementSearchForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.SupplementService;
-import FitMate.FitMateBackend.supplement.entity.SupplementType;
 import FitMate.FitMateBackend.supplement.dto.SupplementListResponse;
+import FitMate.FitMateBackend.supplement.dto.SupplementResponse;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.supplement.entity.SupplementType;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,13 +24,13 @@ public class SupplementController {
     private final SupplementService supplementService;
 
     @GetMapping("/{supplementId}")
-    public SupplementDto getSingleSupplement(
+    public SupplementResponse getSingleSupplement(
         @PathVariable("supplementId") Long supplementId
     ){
         Supplement supplement = supplementService.findSupplementById(supplementId);
 
         if (supplement == null) {
-            return new SupplementDto();
+            return new SupplementResponse();
         }
 
         return supplementService.makeSupplementDto(supplement);
@@ -49,7 +49,6 @@ public class SupplementController {
 
     @GetMapping("/type")
     public List<SupplementType> getSupplementTypes() {
-
         return Arrays.stream(SupplementType.values()).toList();
     }
 

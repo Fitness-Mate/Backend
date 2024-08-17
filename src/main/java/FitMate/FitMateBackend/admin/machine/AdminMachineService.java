@@ -1,10 +1,10 @@
 package FitMate.FitMateBackend.admin.machine;
 
 import FitMate.FitMateBackend.admin.bodypart.AdminBodyPartRepository;
-import FitMate.FitMateBackend.machine.dto.MachineRequest;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.common.exception.ApiErrorCode;
 import FitMate.FitMateBackend.common.exception.ApiException;
-import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.machine.dto.MachineRequest;
 import FitMate.FitMateBackend.machine.dto.MachineResponse;
 import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.machine.entity.MachineMapper;

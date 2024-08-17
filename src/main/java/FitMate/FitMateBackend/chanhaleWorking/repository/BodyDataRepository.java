@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.repository;
 
-import FitMate.FitMateBackend.domain.BodyData;
+import FitMate.FitMateBackend.user.entity.BodyData;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;

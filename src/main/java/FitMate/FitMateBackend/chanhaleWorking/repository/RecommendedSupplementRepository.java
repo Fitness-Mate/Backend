@@ -1,7 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.repository;
 
-import FitMate.FitMateBackend.domain.recommendation.RecommendedSupplement;
-import FitMate.FitMateBackend.domain.recommendation.SupplementRecommendation;
+import FitMate.FitMateBackend.recommend.entity.RecommendedSupplement;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;

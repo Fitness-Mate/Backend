@@ -8,14 +8,14 @@ import FitMate.FitMateBackend.chanhaleWorking.repository.RecommendedSupplementRe
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRecommendationRepository;
 import FitMate.FitMateBackend.chanhaleWorking.repository.SupplementRepository;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.cjjsWorking.service.apiService.DeepLTranslateService;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.common.exception.errorcodes.RecommendErrorCode;
 import FitMate.FitMateBackend.common.exception.exceptions.RecommendException;
-import FitMate.FitMateBackend.domain.User;
-import FitMate.FitMateBackend.domain.recommendation.RecommendedSupplement;
-import FitMate.FitMateBackend.domain.recommendation.SupplementRecommendation;
+import FitMate.FitMateBackend.common.util.DeepLTranslateUtil;
+import FitMate.FitMateBackend.recommend.entity.RecommendedSupplement;
+import FitMate.FitMateBackend.recommend.entity.SupplementRecommendation;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.user.entity.User;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ public class SupplementRecommendationService {
     private final UserRepository userRepository;
     private final SupplementRepository supplementRepository;
     private final RecommendedSupplementRepository recommendedSupplementRepository;
-    private final DeepLTranslateService deepLTranslateService;
+    private final DeepLTranslateUtil deepLTranslateUtil;
 
     @Transactional
     public Long createSupplementRecommendation(Long userId, SupplementRecommendationForm supplementRecommendationForm) {
@@ -110,7 +110,7 @@ public class SupplementRecommendationService {
 
                sb.append(ServiceConst.KOR_REASON_SUFFIX);
            }
-            String responseKor = deepLTranslateService.sendRequest(sb.toString());
+            String responseKor = deepLTranslateUtil.sendRequest(sb.toString());
            prevReasonEnd = -1;
             while (true) {
                 numStart = response.indexOf(ServiceConst.RECOMMEND_PREFIX, numStart+1);

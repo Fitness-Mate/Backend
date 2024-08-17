@@ -1,12 +1,11 @@
 package FitMate.FitMateBackend.workout.dto;
 
-import FitMate.FitMateBackend.domain.recommendation.RecommendedWorkout;
-import FitMate.FitMateBackend.domain.recommendation.WorkoutRecommendation;
-import lombok.Getter;
-
+import FitMate.FitMateBackend.recommend.entity.RecommendedWorkout;
+import FitMate.FitMateBackend.recommend.entity.WorkoutRecommendation;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Getter;
 
 @Getter
 public class WorkoutRecommendPageDto {

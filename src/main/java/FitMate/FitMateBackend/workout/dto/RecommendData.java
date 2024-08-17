@@ -1,10 +1,10 @@
 package FitMate.FitMateBackend.workout.dto;
 
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.domain.recommendation.RecommendedWorkout;
-import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.common.util.S3Util;
+import FitMate.FitMateBackend.machine.entity.Machine;
+import FitMate.FitMateBackend.recommend.entity.RecommendedWorkout;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.Data;

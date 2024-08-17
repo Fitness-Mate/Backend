@@ -3,7 +3,7 @@ package FitMate.FitMateBackend.chanhaleWorking.controller.admin;
 import FitMate.FitMateBackend.chanhaleWorking.form.login.LoginForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.LoginService;
 import FitMate.FitMateBackend.common.constraint.SessionConst;
-import FitMate.FitMateBackend.domain.User;
+import FitMate.FitMateBackend.user.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;

@@ -19,7 +19,8 @@ public interface ServiceConst {
     public static final String KOR_REASON_SUFFIX = "$$";
 
     //s3 directory constraint
-    public static final String S3_URL = "https://fitmate-bucket.s3.ap-northeast-2.amazonaws.com/images/";
+//    public static final String S3_URL = "https://fitmate-bucket.s3.ap-northeast-2.amazonaws.com/images/";
+    public static final String S3_URL = "https://fitness-mate.s3.ap-northeast-2.amazonaws.com/images/";
     public static final String S3_DIR_WORKOUT = "workout";
     public static final String S3_DIR_SUPPLEMENT = "supplement";
 

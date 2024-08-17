@@ -1,6 +1,5 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller;
 
-import FitMate.FitMateBackend.common.configuration.argumentresolver.Login;
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.mailServer.UuidVerifyingRequestDto;
@@ -9,9 +8,10 @@ import FitMate.FitMateBackend.chanhaleWorking.form.user.RegisterForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.user.UpdatePasswordForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.user.UpdateUserForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.UserService;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.AuthResponse;
+import FitMate.FitMateBackend.common.auth.AuthResponse;
+import FitMate.FitMateBackend.common.configuration.argumentresolver.Login;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
-import FitMate.FitMateBackend.domain.User;
+import FitMate.FitMateBackend.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;

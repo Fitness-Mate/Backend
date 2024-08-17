@@ -2,12 +2,12 @@ package FitMate.FitMateBackend.admin.workout;
 
 import FitMate.FitMateBackend.admin.bodypart.AdminBodyPartRepository;
 import FitMate.FitMateBackend.admin.machine.AdminMachineRepository;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
 import FitMate.FitMateBackend.common.exception.ApiErrorCode;
 import FitMate.FitMateBackend.common.exception.ApiException;
-import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.common.util.S3Util;
+import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
 import FitMate.FitMateBackend.workout.dto.WorkoutResponse;
 import FitMate.FitMateBackend.workout.entity.Workout;

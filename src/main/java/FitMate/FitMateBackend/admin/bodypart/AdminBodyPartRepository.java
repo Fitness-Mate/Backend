@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.admin.bodypart;
 
-import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import io.lettuce.core.dynamic.annotation.Param;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.machine.dto;
 
-import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
 import java.util.ArrayList;
 import java.util.List;

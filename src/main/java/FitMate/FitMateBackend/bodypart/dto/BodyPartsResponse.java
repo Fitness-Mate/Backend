@@ -1,12 +1,11 @@
 package FitMate.FitMateBackend.bodypart.dto;
 
-import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @NoArgsConstructor

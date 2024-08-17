@@ -1,11 +1,10 @@
 package FitMate.FitMateBackend.chanhaleWorking.form.recommendation;
 
-import FitMate.FitMateBackend.domain.Purpose;
+import FitMate.FitMateBackend.recommend.entity.Purpose;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Getter
 @AllArgsConstructor

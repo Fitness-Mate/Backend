@@ -1,19 +1,23 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller;
 
-import FitMate.FitMateBackend.common.configuration.argumentresolver.Login;
 import FitMate.FitMateBackend.chanhaleWorking.dto.BodyDataDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.bodyData.BodyDataForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.BodyDataService;
-import FitMate.FitMateBackend.domain.BodyData;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
+import FitMate.FitMateBackend.common.configuration.argumentresolver.Login;
+import FitMate.FitMateBackend.user.entity.BodyData;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @Controller

@@ -1,12 +1,12 @@
 package FitMate.FitMateBackend.admin.bodypart;
 
-import FitMate.FitMateBackend.bodypart.dto.BodyPartResponse;
 import FitMate.FitMateBackend.bodypart.dto.BodyPartRequest;
+import FitMate.FitMateBackend.bodypart.dto.BodyPartResponse;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.common.exception.ApiErrorCode;
 import FitMate.FitMateBackend.common.exception.ApiException;
 import FitMate.FitMateBackend.common.exception.errorcodes.CustomErrorCode;
 import FitMate.FitMateBackend.common.exception.exceptions.CustomException;
-import FitMate.FitMateBackend.domain.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import java.util.Optional;

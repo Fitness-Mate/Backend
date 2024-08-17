@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.bodypart.dto;
 
-import FitMate.FitMateBackend.domain.BodyPart;
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

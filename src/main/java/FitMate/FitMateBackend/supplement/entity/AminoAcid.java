@@ -1,7 +1,8 @@
 package FitMate.FitMateBackend.supplement.entity;
 
-import FitMate.FitMateBackend.chanhaleWorking.form.supplement.SupplementForm;
 import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.supplement.dto.SupplementRequest;
+import FitMate.FitMateBackend.supplement.dto.SupplementRequestOld;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -27,35 +28,35 @@ public class AminoAcid extends Supplement {
     private Float histidine;
     private Float tryptophan;
 
-    public AminoAcid(SupplementForm supplementForm) {
-        super(supplementForm);
-        this.leucine = supplementForm.getLeucine();
-        this.isoLeucine = supplementForm.getIsoLeucine();
-        this.valine = supplementForm.getValine();
-        this.L_Carnitine = supplementForm.getL_Carnitine();
-        this.L_Glutamine = supplementForm.getL_Glutamine();
-        this.L_Alanine = supplementForm.getL_Alanine();
-        this.L_Lysine = supplementForm.getL_Lysine();
-        this.methionine = supplementForm.getMethionine();
-        this.phenylalanine = supplementForm.getPhenylalanine();
-        this.threonine = supplementForm.getThreonine();
-        this.histidine = supplementForm.getHistidine();
-        this.tryptophan = supplementForm.getTryptophan();
+    public AminoAcid(SupplementRequest supplementRequest) {
+        super(supplementRequest);
+        this.leucine = supplementRequest.getLeucine();
+        this.isoLeucine = supplementRequest.getIsoLeucine();
+        this.valine = supplementRequest.getValine();
+        this.L_Carnitine = supplementRequest.getL_Carnitine();
+        this.L_Glutamine = supplementRequest.getL_Glutamine();
+        this.L_Alanine = supplementRequest.getL_Alanine();
+        this.L_Lysine = supplementRequest.getL_Lysine();
+        this.methionine = supplementRequest.getMethionine();
+        this.phenylalanine = supplementRequest.getPhenylalanine();
+        this.threonine = supplementRequest.getThreonine();
+        this.histidine = supplementRequest.getHistidine();
+        this.tryptophan = supplementRequest.getTryptophan();
     }
-    public void updateFields(SupplementForm supplementForm) {
-        super.updateFields(supplementForm);
-        this.leucine = supplementForm.getLeucine();
-        this.isoLeucine = supplementForm.getIsoLeucine();
-        this.valine = supplementForm.getValine();
-        this.L_Carnitine = supplementForm.getL_Carnitine();
-        this.L_Glutamine = supplementForm.getL_Glutamine();
-        this.L_Alanine = supplementForm.getL_Alanine();
-        this.L_Lysine = supplementForm.getL_Lysine();
-        this.methionine = supplementForm.getMethionine();
-        this.phenylalanine = supplementForm.getPhenylalanine();
-        this.threonine = supplementForm.getThreonine();
-        this.histidine = supplementForm.getHistidine();
-        this.tryptophan = supplementForm.getTryptophan();
+    public void updateFields(SupplementRequestOld supplementRequestOld) {
+        super.updateFields(supplementRequestOld);
+        this.leucine = supplementRequestOld.getLeucine();
+        this.isoLeucine = supplementRequestOld.getIsoLeucine();
+        this.valine = supplementRequestOld.getValine();
+        this.L_Carnitine = supplementRequestOld.getL_Carnitine();
+        this.L_Glutamine = supplementRequestOld.getL_Glutamine();
+        this.L_Alanine = supplementRequestOld.getL_Alanine();
+        this.L_Lysine = supplementRequestOld.getL_Lysine();
+        this.methionine = supplementRequestOld.getMethionine();
+        this.phenylalanine = supplementRequestOld.getPhenylalanine();
+        this.threonine = supplementRequestOld.getThreonine();
+        this.histidine = supplementRequestOld.getHistidine();
+        this.tryptophan = supplementRequestOld.getTryptophan();
     }
 
     @Override
