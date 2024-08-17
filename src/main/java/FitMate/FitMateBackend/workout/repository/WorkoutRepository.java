@@ -1,21 +1,24 @@
 package FitMate.FitMateBackend.workout.repository;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutSearchCond;
-import FitMate.FitMateBackend.cjjsWorking.service.BodyPartService;
-import FitMate.FitMateBackend.consts.ServiceConst;
-import FitMate.FitMateBackend.domain.BodyPart;
-import FitMate.FitMateBackend.domain.Machine;
+import static org.springframework.util.StringUtils.hasText;
+
+import FitMate.FitMateBackend.bodypart.entity.BodyPart;
+import FitMate.FitMateBackend.bodypart.service.BodyPartService;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.machine.entity.Machine;
+import FitMate.FitMateBackend.workout.dto.WorkoutSearchCond;
 import FitMate.FitMateBackend.workout.entity.QWorkout;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
-import java.util.*;
-
-import static org.springframework.util.StringUtils.hasText;
 
 @Repository
 @RequiredArgsConstructor

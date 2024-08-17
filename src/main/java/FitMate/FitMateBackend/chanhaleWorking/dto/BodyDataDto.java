@@ -1,11 +1,10 @@
 package FitMate.FitMateBackend.chanhaleWorking.dto;
 
-import FitMate.FitMateBackend.domain.BodyData;
+import FitMate.FitMateBackend.user.entity.BodyData;
+import java.time.LocalDate;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 /**
  * history 그래프 조회 또는 recommendation 화면에 노출 될 bodyData
  *

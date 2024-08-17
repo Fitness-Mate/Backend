@@ -1,9 +1,10 @@
 package FitMate.FitMateBackend.chanhaleWorking.service;
 
-import FitMate.FitMateBackend.chanhaleWorking.config.ChatGptConfig;
 import FitMate.FitMateBackend.chanhaleWorking.dto.ChatGptRequestDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.ChatGptResponseDto;
-import FitMate.FitMateBackend.cjjsWorking.service.recommendService.WorkoutRecommendationService;
+import FitMate.FitMateBackend.common.configuration.ChatGptConfig;
+import FitMate.FitMateBackend.recommend.service.WorkoutRecommendationService;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,8 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Objects;
 
 @Service
 @Slf4j

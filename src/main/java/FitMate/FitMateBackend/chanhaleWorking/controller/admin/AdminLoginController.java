@@ -1,21 +1,19 @@
 package FitMate.FitMateBackend.chanhaleWorking.controller.admin;
 
-import FitMate.FitMateBackend.cjjsWorking.service.authService.AuthResponse;
-import FitMate.FitMateBackend.consts.SessionConst;
 import FitMate.FitMateBackend.chanhaleWorking.form.login.LoginForm;
 import FitMate.FitMateBackend.chanhaleWorking.service.LoginService;
-import FitMate.FitMateBackend.domain.User;
+import FitMate.FitMateBackend.common.constraint.SessionConst;
+import FitMate.FitMateBackend.user.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Objects;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Admin 페이지의 Login 기능을 처리하는 컨트롤러

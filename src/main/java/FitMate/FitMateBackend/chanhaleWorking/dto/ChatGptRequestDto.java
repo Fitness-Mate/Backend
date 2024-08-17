@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.dto;
 
-import FitMate.FitMateBackend.chanhaleWorking.config.ChatGptConfig;
+import FitMate.FitMateBackend.common.configuration.ChatGptConfig;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

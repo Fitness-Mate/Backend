@@ -1,14 +1,12 @@
 package FitMate.FitMateBackend.chanhaleWorking.dto;
 
-import FitMate.FitMateBackend.domain.recommendation.RecommendedSupplement;
-import FitMate.FitMateBackend.domain.recommendation.SupplementRecommendation;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
+import FitMate.FitMateBackend.recommend.entity.SupplementRecommendation;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Data
 @Getter

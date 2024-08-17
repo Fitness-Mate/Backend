@@ -1,13 +1,12 @@
 package FitMate.FitMateBackend.jjsTest.myfit;
 
 import FitMate.FitMateBackend.chanhaleWorking.service.UserService;
+import FitMate.FitMateBackend.user.entity.User;
 import FitMate.FitMateBackend.workout.service.WorkoutServiceImpl;
-import FitMate.FitMateBackend.domain.User;
+import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.time.LocalDate;
 
 @SpringBootTest
 public class MyFitTest {

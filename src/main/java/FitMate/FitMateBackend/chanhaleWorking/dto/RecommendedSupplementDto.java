@@ -1,14 +1,16 @@
 package FitMate.FitMateBackend.chanhaleWorking.dto;
 
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.S3FileService;
-import FitMate.FitMateBackend.consts.ServiceConst;
-import FitMate.FitMateBackend.domain.supplement.*;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.supplement.entity.AminoAcid;
+import FitMate.FitMateBackend.supplement.entity.Gainer;
+import FitMate.FitMateBackend.supplement.entity.Other;
+import FitMate.FitMateBackend.supplement.entity.Protein;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
+import FitMate.FitMateBackend.common.util.S3Util;
+import java.util.List;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Getter
@@ -61,7 +63,7 @@ public class RecommendedSupplementDto {
         this.description = supplement.getDescription();
         this.marketURL = supplement.getMarketURL();
         this.flavor = supplement.getFlavor();
-        this.imageURL = S3FileService.getAccessURL(ServiceConst.S3_DIR_SUPPLEMENT, supplement.getImageName());
+        this.imageURL = S3Util.getAccessURL(ServiceConst.S3_DIR_SUPPLEMENT, supplement.getImageName());
 //        this.image = new UrlResource("file:" + FileStoreService.getFullPath(supplement.getImagePath()));
         this.isCaptain = supplement.getIsCaptain();
         this.otherFlavors = otherFlavors;

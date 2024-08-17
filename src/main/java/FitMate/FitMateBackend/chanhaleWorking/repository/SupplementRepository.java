@@ -2,17 +2,16 @@ package FitMate.FitMateBackend.chanhaleWorking.repository;
 
 import FitMate.FitMateBackend.chanhaleWorking.dto.SupplementFlavorDto;
 import FitMate.FitMateBackend.chanhaleWorking.dto.SupplementFlavorServingDto;
-import FitMate.FitMateBackend.consts.ServiceConst;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+import FitMate.FitMateBackend.supplement.entity.SupplementType;
 import FitMate.FitMateBackend.supplement.entity.Supplement;
-import FitMate.FitMateBackend.domain.supplement.SupplementType;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Repository
 @RequiredArgsConstructor

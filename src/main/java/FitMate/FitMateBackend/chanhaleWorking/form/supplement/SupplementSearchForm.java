@@ -1,6 +1,6 @@
 package FitMate.FitMateBackend.chanhaleWorking.form.supplement;
 
-import FitMate.FitMateBackend.domain.supplement.SupplementType;
+import FitMate.FitMateBackend.supplement.entity.SupplementType;
 import lombok.Data;
 import lombok.Getter;
 

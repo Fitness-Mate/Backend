@@ -1,8 +1,8 @@
 package FitMate.FitMateBackend.workout.controller;
 
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutForm;
-import FitMate.FitMateBackend.cjjsWorking.dto.workout.WorkoutSearchCond;
-import FitMate.FitMateBackend.workout.dto.WorkoutResponseDto;
+import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
+import FitMate.FitMateBackend.workout.dto.WorkoutSearchCond;
+import FitMate.FitMateBackend.workout.dto.WorkoutResponse;
 import FitMate.FitMateBackend.workout.service.WorkoutServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,17 +18,8 @@ public class WorkoutController {
 
     private final WorkoutServiceImpl workoutService;
 
-    @PostMapping("") //운동 등록
-    public ResponseEntity<WorkoutResponseDto> saveWorkout(
-        @ModelAttribute WorkoutForm form
-    ) {
-        return ResponseEntity
-            .status(HttpStatus.CREATED)
-            .body(workoutService.save(form));
-    }
-
     @PostMapping("/search/list/{page}") //운동 페이지 검색
-    public ResponseEntity<List<WorkoutResponseDto>> search(
+    public ResponseEntity<List<WorkoutResponse>> search(
         @PathVariable("page") int page,
         @RequestBody WorkoutSearchCond cond
     ) {
@@ -38,7 +29,7 @@ public class WorkoutController {
     }
 
     @GetMapping("/{workoutId}") //운동 단건조회
-    public ResponseEntity<WorkoutResponseDto> findOne(
+    public ResponseEntity<WorkoutResponse> findOne(
         @PathVariable("workoutId") Long workoutId
     ) {
         return ResponseEntity
@@ -47,9 +38,9 @@ public class WorkoutController {
     }
 
     @PutMapping("/{workoutId}") //운동 수정
-    public ResponseEntity<WorkoutResponseDto> updateWorkout(
+    public ResponseEntity<WorkoutResponse> updateWorkout(
         @PathVariable("workoutId") Long workoutId,
-        @ModelAttribute WorkoutForm form
+        @ModelAttribute WorkoutRequest form
     ) {
         return ResponseEntity
             .status(HttpStatus.OK)
@@ -57,7 +48,7 @@ public class WorkoutController {
     }
 
     @DeleteMapping("/{workoutId}") //운동 삭제
-    public ResponseEntity<WorkoutResponseDto> deleteWorkout(
+    public ResponseEntity<WorkoutResponse> deleteWorkout(
         @PathVariable("workoutId") Long workoutId
     ) {
         return ResponseEntity

@@ -1,11 +1,9 @@
 package FitMate.FitMateBackend.chanhaleWorking.dto;
 
-import FitMate.FitMateBackend.domain.User;
-import lombok.AllArgsConstructor;
+import FitMate.FitMateBackend.user.entity.User;
+import java.time.LocalDate;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDate;
 
 /**
  * 유저 정보 요청에 대한 dto

@@ -1,29 +1,25 @@
 package FitMate.FitMateBackend.chanhaleWorking.service;
 
 import FitMate.FitMateBackend.chanhaleWorking.dto.GeneralResponseDto;
-import FitMate.FitMateBackend.chanhaleWorking.dto.UserArgResolverDto;
 import FitMate.FitMateBackend.chanhaleWorking.form.user.RegisterForm;
 import FitMate.FitMateBackend.chanhaleWorking.form.user.UpdateUserForm;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.RoutineSetData;
-import FitMate.FitMateBackend.cjjsWorking.dto.myfit.routine.RoutineSetRequest;
-import FitMate.FitMateBackend.cjjsWorking.service.RoutineService;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.AuthResponse;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.ExtraClaims;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.RedisCacheService;
-import FitMate.FitMateBackend.domain.BodyData;
-import FitMate.FitMateBackend.domain.User;
+import FitMate.FitMateBackend.common.auth.AuthResponse;
+import FitMate.FitMateBackend.common.auth.ExtraClaims;
+import FitMate.FitMateBackend.common.auth.JwtService;
+import FitMate.FitMateBackend.common.util.RedisUtil;
+import FitMate.FitMateBackend.myfit.dto.routine.RoutineSetData;
+import FitMate.FitMateBackend.myfit.service.RoutineService;
+import FitMate.FitMateBackend.user.entity.BodyData;
+import FitMate.FitMateBackend.user.entity.User;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -104,7 +100,7 @@ public class UserService {
     //🔽🔽🔽 Jwt 🔽🔽🔽
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
-    private final RedisCacheService redisCacheService;
+    private final RedisUtil redisUtil;
     private final RoutineService routineService;
 
     @Transactional
@@ -131,7 +127,7 @@ public class UserService {
 
         String accessToken = jwtService.generateAccessToken(newUser, new ExtraClaims(newUser));
         String refreshToken = jwtService.generateRefreshToken(newUser, false);
-        redisCacheService.saveToken(refreshToken, false);
+        redisUtil.saveToken(refreshToken, false);
 
         return new AuthResponse(accessToken, refreshToken, false);
     }

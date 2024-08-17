@@ -2,15 +2,13 @@ package FitMate.FitMateBackend.chanhaleWorking.service;
 
 import FitMate.FitMateBackend.chanhaleWorking.form.login.LoginForm;
 import FitMate.FitMateBackend.chanhaleWorking.repository.UserRepository;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.AuthErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.errorcodes.CustomErrorCode;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.AuthException;
-import FitMate.FitMateBackend.cjjsWorking.exception.exceptions.CustomException;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.AuthResponse;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.ExtraClaims;
-import FitMate.FitMateBackend.cjjsWorking.service.authService.JwtService;
-import FitMate.FitMateBackend.cjjsWorking.service.storageService.RedisCacheService;
-import FitMate.FitMateBackend.domain.User;
+import FitMate.FitMateBackend.common.auth.AuthResponse;
+import FitMate.FitMateBackend.common.auth.ExtraClaims;
+import FitMate.FitMateBackend.common.auth.JwtService;
+import FitMate.FitMateBackend.common.exception.errorcodes.AuthErrorCode;
+import FitMate.FitMateBackend.common.exception.exceptions.AuthException;
+import FitMate.FitMateBackend.common.util.RedisUtil;
+import FitMate.FitMateBackend.user.entity.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -44,7 +42,7 @@ public class LoginService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
-    private final RedisCacheService redisCacheService;
+    private final RedisUtil redisUtil;
 
     public AuthResponse loginWithJwt(LoginForm form) { //user login
         try { //ID, PW 검증
@@ -63,7 +61,7 @@ public class LoginService {
 
         String accessToken = jwtService.generateAccessToken(user, new ExtraClaims(user));
         String refreshToken =jwtService.generateRefreshToken(user, form.isRememberMe());
-        redisCacheService.saveToken(refreshToken, form.isRememberMe());
+        redisUtil.saveToken(refreshToken, form.isRememberMe());
 
         log.info("login attempt! AccessToken: [{}], RefreshToken: [{}], User: [{}]",
                 accessToken,
@@ -73,9 +71,9 @@ public class LoginService {
     }
 
     public void logoutWithJwt(String refreshToken) {
-        if(!redisCacheService.isExist(refreshToken)) {
+        if(!redisUtil.isExist(refreshToken)) {
             throw new AuthException(AuthErrorCode.ALREADY_LOGOUT_EXCEPTION);
         }
-        redisCacheService.removeToken(refreshToken);
+        redisUtil.removeToken(refreshToken);
     }
 }
