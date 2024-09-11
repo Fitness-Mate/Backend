@@ -3,6 +3,7 @@ package FitMate.FitMateBackend.machine.entity;
 import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.workout.entity.Workout;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,8 +19,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class) // DB 생성 및 등록 날짜,시간 기록 가능하도록 추가
 @Getter
 @Builder
 @AllArgsConstructor
