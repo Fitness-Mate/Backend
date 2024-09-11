@@ -3,7 +3,6 @@ package FitMate.FitMateBackend.workout.entity;
 import FitMate.FitMateBackend.bodypart.entity.BodyPart;
 import FitMate.FitMateBackend.machine.entity.Machine;
 import FitMate.FitMateBackend.workout.dto.WorkoutRequest;
-
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -58,6 +57,7 @@ public class Workout {
     private String koreanName;
     private String videoLink;
     private String description;
+		private String atcetera;
     private String imgFileName;
 
     @CreatedDate
@@ -73,6 +73,7 @@ public class Workout {
         this.koreanName = form.getKoreanName();
         this.videoLink = form.getVideoLink();
         this.description = form.getDescription();
+				this.atcetera = form.getAtcetera();
         this.imgFileName = imgFileName;
     }
 

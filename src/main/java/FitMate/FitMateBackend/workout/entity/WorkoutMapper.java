@@ -11,6 +11,7 @@ public class WorkoutMapper {
             .englishName(request.getEnglishName())
             .videoLink(request.getVideoLink())
             .description(request.getDescription())
+						.atcetera(request.getAtcetera())
             .imgFileName(imgFileName)
             .bodyParts(new ArrayList<>())
             .machines(new ArrayList<>())

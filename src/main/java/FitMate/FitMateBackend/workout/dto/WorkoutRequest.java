@@ -15,6 +15,7 @@ public class WorkoutRequest {
     private String koreanName;
     private String videoLink;
     private String description;
+		private String atcetera;
     private List<Long> bodyPartIdList;
     private List<Long> machineIdList;
     private MultipartFile image;

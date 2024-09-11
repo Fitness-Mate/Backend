@@ -18,6 +18,7 @@ public class WorkoutResponse {
     private String imgPath;
     private String videoLink;
     private String description;
+		private String atcetera;
     private final List<String> bodyPartKoreanName = new ArrayList<>();
     private final List<String> machineKoreanName = new ArrayList<>();
     private String createdAt;
@@ -28,7 +29,7 @@ public class WorkoutResponse {
         this.koreanName = workout.getKoreanName();
         this.imgPath = ServiceConst.S3_URL + ServiceConst.S3_DIR_WORKOUT + "/" + workout.getImgFileName();
         this.videoLink = workout.getVideoLink();
-        this.description = workout.getDescription();
+        this.atcetera = workout.getAtcetera();
         for (BodyPart bodyPart : workout.getBodyParts()) {
             this.bodyPartKoreanName.add(bodyPart.getKoreanName());
         }

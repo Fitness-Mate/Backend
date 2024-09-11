@@ -26,6 +26,7 @@ public class MyWorkoutReadAllResponse {
     private String workoutName;
     private String imgPath;
     private String description;
+		private String atcetera;
     private List<String> bodyParts = new ArrayList<>();
     private List<String> machines = new ArrayList<>();
 
@@ -41,6 +42,7 @@ public class MyWorkoutReadAllResponse {
         this.workoutName = workout.getKoreanName();
         this.imgPath = S3Util.getAccessURL(ServiceConst.S3_DIR_WORKOUT, workout.getImgFileName());
         this.description = workout.getDescription();
+				this.atcetera = workout.getAtcetera();
 
         for (BodyPart bodyPart : workout.getBodyParts()) {
             bodyParts.add(bodyPart.getKoreanName());

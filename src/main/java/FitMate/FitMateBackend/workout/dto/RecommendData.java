@@ -17,6 +17,7 @@ public class RecommendData {
     private List<String> machineKoreanName = new ArrayList<>();
     private List<String> bodyPartKoreanName = new ArrayList<>();
     private String description;
+		private String atcetera;
     private String imgPath;
     private String weight;
     private String repeat;
@@ -27,6 +28,7 @@ public class RecommendData {
         this.koreanName = recommend.getWorkout().getKoreanName();
         this.englishName = recommend.getWorkout().getEnglishName();
         this.description = recommend.getWorkout().getDescription();
+				this.atcetera = recommend.getWorkout().getAtcetera();
         this.imgPath = S3Util.getAccessURL(ServiceConst.S3_DIR_WORKOUT, recommend.getWorkout().getImgFileName());
         this.weight = recommend.getWeight();
         this.repeat = recommend.getRepeats();
