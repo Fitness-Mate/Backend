@@ -29,7 +29,8 @@ public class WorkoutResponse {
         this.koreanName = workout.getKoreanName();
         this.imgPath = ServiceConst.S3_URL + ServiceConst.S3_DIR_WORKOUT + "/" + workout.getImgFileName();
         this.videoLink = workout.getVideoLink();
-        this.atcetera = workout.getAtcetera();
+        this.description = workout.getDescription();
+				this.atcetera = workout.getAtcetera();
         for (BodyPart bodyPart : workout.getBodyParts()) {
             this.bodyPartKoreanName.add(bodyPart.getKoreanName());
         }
