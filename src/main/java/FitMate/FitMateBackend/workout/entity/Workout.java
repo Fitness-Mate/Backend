@@ -24,6 +24,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class) // DB 생성 및 등록 날짜,시간 기록 가능하도록 추가
 @Getter
 @Builder
 @AllArgsConstructor
