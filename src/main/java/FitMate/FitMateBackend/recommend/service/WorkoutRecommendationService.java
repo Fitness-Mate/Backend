@@ -66,13 +66,18 @@ public void updateResponse(Long recommendationId, String response) throws Except
 	// response를 로그로 출력하여 응답 형식을 확인
         logger.debug("GPT Response: {}", response);
 
+				logger.debug("Requested body parts: {}", workoutRecommendation.getRequestedBodyParts());
+
+
 if (workoutRecommendation == null) {
     throw new IllegalArgumentException("Recommendation not found");
 }
 
     if (workoutRecommendation.getRequestedBodyParts() == null) {
-    workoutRecommendation.setRequestedBodyParts(""); // 기본값 설정
+    logger.error("Requested body parts cannot be null.");
+    throw new IllegalArgumentException("Requested body parts cannot be null.");
 }
+
 
 
 
