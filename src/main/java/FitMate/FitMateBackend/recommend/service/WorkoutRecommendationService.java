@@ -78,23 +78,21 @@ if (workoutRecommendation == null) {
     throw new IllegalArgumentException("Requested body parts cannot be null.");
 }
 
-
-
-
     String[] sentences = response.split("\n");
 
     Set<String> uniqueResponses = new HashSet<>();
 
     for (String sentence : sentences) {
-    if (!sentence.matches("\\[\\d+\\]\\s*\\[\\d+\\s*kg\\]\\s*\\[\\d+\\]\\s*\\[\\d+\\]\\s*(\\[.*\\])?")) {
-        logger.error("Invalid response format: {}", sentence);
-        continue;
-    }
+    // 응답 형식이 유효한지 확인
+        if (!sentence.matches("\\[\\d+\\]\\s*\\[\\d+\\s*kg\\]\\s*\\[\\d+\\]\\s*\\[\\d+\\]\\s*(\\[.*\\])?")) {
+            logger.error("Invalid response format: {}", sentence);
+            continue;  // 잘못된 형식은 건너뜀
+        }
 
     if (!uniqueResponses.add(sentence)) {
-        logger.info("Duplicate response detected and skipped: {}", sentence);
-        continue;
-    }
+            logger.info("Duplicate response detected and skipped: {}", sentence);
+            continue;  // 중복된 응답은 건너뜀
+        }
 
     try {
         String[] info = sentence.split("\\]\\s*\\[");
