@@ -31,14 +31,16 @@ public class RecommendedWorkout {
     private String weight;
     private String repeats;
     private String sets;
+		private String caution;  // 각 운동에 대한 주의사항을 저장
 
     public void update(WorkoutRecommendation workoutRecommendation,
                        Workout workout, String weight,
-                       String repeats, String sets) {
+                       String repeats, String sets, String caution) {
         this.workoutRecommendation = workoutRecommendation;
         this.workout = workout;
         this.weight = weight;
         this.repeats = repeats;
         this.sets = sets;
+				this.caution = caution;
     }
 }

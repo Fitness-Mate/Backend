@@ -22,6 +22,7 @@ public class RecommendData {
     private String weight;
     private String repeat;
     private String set;
+		private String caution;
 
     public RecommendData(RecommendedWorkout recommend) {
         this.workoutId = recommend.getWorkout().getId();
@@ -33,6 +34,7 @@ public class RecommendData {
         this.weight = recommend.getWeight();
         this.repeat = recommend.getRepeats();
         this.set = recommend.getSets();
+				this.caution = recommend.getCaution();
 
         for (BodyPart bodyPart : recommend.getWorkout().getBodyParts()) {
             this.bodyPartKoreanName.add(bodyPart.getKoreanName());

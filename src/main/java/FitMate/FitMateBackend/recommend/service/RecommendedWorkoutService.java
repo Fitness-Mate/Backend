@@ -18,7 +18,14 @@ public class RecommendedWorkoutService {
 
     @Transactional
     public void save(RecommendedWorkout recommendedWorkout) {
-        recommendedWorkoutRepository.save(recommendedWorkout);
+        try {
+            recommendedWorkoutRepository.save(recommendedWorkout);
+        } catch (Exception e) {
+            // 예외 발생 시 로그를 남기고 다시 던짐
+            System.err.println("데이터베이스 저장 중 예외 발생: " + e.getMessage());
+            e.printStackTrace();
+            throw e;  // 예외를 다시 던져 트랜잭션 롤백을 유도
+        }
     }
 
     public List<RecommendedWorkout> findById(Long recommendationId) {

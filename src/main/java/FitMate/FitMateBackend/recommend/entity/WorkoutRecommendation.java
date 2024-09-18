@@ -27,6 +27,8 @@ public class WorkoutRecommendation extends Recommendation {
     private String requestedBodyParts;
     private String requestedMachines;
 
+		private String caution;  // 운동에 대한 주의사항 저장 추가
+
     public static WorkoutRecommendation createWorkoutRecommendation
             (User user, List<BodyPart> bodyParts, List<Machine> machines, String workoutList) {
         WorkoutRecommendation workoutRecommendation = new WorkoutRecommendation();
@@ -83,7 +85,11 @@ public class WorkoutRecommendation extends Recommendation {
         qString = qString.concat("3. When recommending a weight, " +
                 "please suggest an exact number (kg) instead of an ambiguous expression such as a medium weight.\n\n");
         qString = qString.concat("4. Only recommend exercises that use the exercise equipment I suggested. " +
-                "The recommended exercise and the equipment used must match.");
+                "The recommended exercise and the equipment used must match.\n\n");
+
+				// 각 운동에 대한 주의사항 요청 추가
+				qString = qString.concat("5. Please provide related precautions or safety guidelines for each exercise. These precautions must be written in **Korean**.\n\n");
+				qString = qString.concat("[workout index in list][weight(kg)][repeat][set][caution]\n");
 
         workoutRecommendation.setQueryText(qString);
         return workoutRecommendation;
