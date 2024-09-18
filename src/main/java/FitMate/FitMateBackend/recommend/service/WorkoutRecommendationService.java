@@ -71,8 +71,9 @@ if (workoutRecommendation == null) {
 }
 
     if (workoutRecommendation.getRequestedBodyParts() == null) {
-    throw new IllegalArgumentException("Requested body parts cannot be null.");
+    workoutRecommendation.setRequestedBodyParts(""); // 기본값 설정
 }
+
 
 
     String[] sentences = response.split("\n");
