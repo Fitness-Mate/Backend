@@ -79,8 +79,7 @@ if (workoutRecommendation == null) {
 }
 
     String[] sentences = response.split("\n");
-
-    Set<String> uniqueResponses = new HashSet<>();
+    Set<String> uniqueResponses = new HashSet<>();  // 중복 제거를 위한 Set
 
     for (String sentence : sentences) {
     // 응답 형식이 유효한지 확인
@@ -89,6 +88,7 @@ if (workoutRecommendation == null) {
             continue;  // 잘못된 형식은 건너뜀
         }
 
+		// 중복 응답 체크
     if (!uniqueResponses.add(sentence)) {
             logger.info("Duplicate response detected and skipped: {}", sentence);
             continue;  // 중복된 응답은 건너뜀
@@ -102,12 +102,17 @@ if (workoutRecommendation == null) {
         String set = info[3].replace("]", "").trim();
         String caution = (info.length > 4) ? info[4].replace("]", "").trim() : "주의사항이 없습니다.";
 
+				// caution이 null인 경우 처리
+if (caution == null || caution.isEmpty()) {
+    logger.error("Caution is missing for workout ID: {}. Possible reasons: response format is incorrect or no caution provided.", workoutId);
+}
+
         // 중복 체크: 같은 추천 ID와 운동 ID가 있는지 확인
-        boolean isDuplicate = recommendedWorkoutRepository.existsByWorkoutIdAndRecommendId(workoutId, recommendationId);
-        if (isDuplicate) {
-            logger.info("Workout ID {} for recommendation ID {} already exists, skipping.", workoutId, recommendationId);
-            continue;
-        }
+            boolean isDuplicate = recommendedWorkoutRepository.existsByWorkoutIdAndRecommendId(workoutId, recommendationId);
+            if (isDuplicate) {
+                logger.info("Workout ID {} for recommendation ID {} already exists, skipping.", workoutId, recommendationId);
+                continue;  // DB에 이미 존재하는 경우 건너뜀
+            }
 
         Workout workout = workoutRepository.findById(workoutId)
             .orElseThrow(() -> new CustomException(CustomErrorCode.WORKOUT_NOT_FOUND_EXCEPTION));
