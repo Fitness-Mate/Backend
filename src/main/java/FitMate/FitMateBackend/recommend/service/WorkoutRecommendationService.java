@@ -100,12 +100,15 @@ if (workoutRecommendation == null) {
         String weight = info[1].replace("kg", "").trim();
         String repeat = info[2].trim();
         String set = info[3].replace("]", "").trim();
-        String caution = (info.length > 4) ? info[4].replace("]", "").trim() : "주의사항이 없습니다.";
+        // caution을 체크하는 부분
+String caution = (info.length > 4) ? info[4].replace("]", "").trim() : null;
 
-				// caution이 null인 경우 처리
+// caution이 null인 경우 처리
 if (caution == null || caution.isEmpty()) {
     logger.error("Caution is missing for workout ID: {}. Possible reasons: response format is incorrect or no caution provided.", workoutId);
+    continue;  // caution이 비어있으면 건너뜀
 }
+
 
         // 중복 체크: 같은 추천 ID와 운동 ID가 있는지 확인
             boolean isDuplicate = recommendedWorkoutRepository.existsByWorkoutIdAndRecommendId(workoutId, recommendationId);
