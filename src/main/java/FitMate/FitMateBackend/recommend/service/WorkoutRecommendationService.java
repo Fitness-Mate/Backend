@@ -62,9 +62,18 @@ public class WorkoutRecommendationService {
     @Transactional(readOnly = false) // 쓰기 작업에 대해 트랜잭션 설정
 public void updateResponse(Long recommendationId, String response) throws Exception {
 	WorkoutRecommendation workoutRecommendation = workoutRecommendationRepository.findById(recommendationId);
+
+	// response를 로그로 출력하여 응답 형식을 확인
+        logger.debug("GPT Response: {}", response);
+
 if (workoutRecommendation == null) {
     throw new IllegalArgumentException("Recommendation not found");
 }
+
+    if (workoutRecommendation.getRequestedBodyParts() == null) {
+    throw new IllegalArgumentException("Requested body parts cannot be null.");
+}
+
 
     String[] sentences = response.split("\n");
 
