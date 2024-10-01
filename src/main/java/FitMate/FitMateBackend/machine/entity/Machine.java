@@ -35,6 +35,7 @@ public class Machine {
 
     private String koreanName;
     private String englishName;
+		private String imgFileName;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "machines")
@@ -55,6 +56,7 @@ public class Machine {
     public void update(String englishName, String koreanName) {
         this.englishName = englishName;
         this.koreanName = koreanName;
+				this.imgFileName = imgFileName;
     }
 
     public void addWorkout(Workout workout) {

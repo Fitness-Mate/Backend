@@ -1,6 +1,8 @@
 package FitMate.FitMateBackend.bodypart.dto;
 
 import FitMate.FitMateBackend.bodypart.entity.BodyPart;
+import FitMate.FitMateBackend.common.constraint.ServiceConst;
+
 import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -14,7 +16,8 @@ public class BodyPartsResponse {
 
     public BodyPartsResponse(List<BodyPart> bodyParts) {
         for (BodyPart bodyPart : bodyParts) {
-            bodyPartKoreanName.add(new BodyPartName(bodyPart.getEnglishName(), bodyPart.getKoreanName()));
+						String imgPath = ServiceConst.S3_URL + ServiceConst.S3_DIR_BODYPART + "/" + bodyPart.getImgFileName();
+            bodyPartKoreanName.add(new BodyPartName(bodyPart.getEnglishName(), bodyPart.getKoreanName(), imgPath));
         }
     }
 }
@@ -24,4 +27,5 @@ public class BodyPartsResponse {
 class BodyPartName {
     private String englishName;
     private String koreanName;
+		private String imgPath;
 }

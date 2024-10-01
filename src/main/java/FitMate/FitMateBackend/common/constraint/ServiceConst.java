@@ -23,6 +23,8 @@ public interface ServiceConst {
     public static final String S3_URL = "https://fitness-mate.s3.ap-northeast-2.amazonaws.com/images/";
     public static final String S3_DIR_WORKOUT = "workout";
     public static final String S3_DIR_SUPPLEMENT = "supplement";
+		public static final String S3_DIR_BODYPART = "body_part";
+		public static final String S3_DIR_MACHINE = "machine";
 
     // mail service config
 //    public static final String MAIL_SERVER_ADDRESS = "http://fitmate-mail-svc-clusterip:8081";

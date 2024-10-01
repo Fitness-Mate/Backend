@@ -44,6 +44,7 @@ public class BodyPart {
 
     private String englishName;
     private String koreanName;
+		private String imgFileName;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false)
@@ -53,9 +54,10 @@ public class BodyPart {
     @Column(name = "modified_at")
     private LocalDateTime modifiedAt;
 
-    public void update(String englishName, String koreanName) {
+    public void update(String englishName, String koreanName, String imgFileName) {
         this.englishName = englishName;
         this.koreanName = koreanName;
+				this.imgFileName = imgFileName;
     }
 
     public void addMachine(Machine machine) {

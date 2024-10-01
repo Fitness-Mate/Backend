@@ -34,7 +34,9 @@ public class AdminMachineService {
             throw new ApiException(ApiErrorCode.MACHINE_ALREADY_EXIST_EXCEPTION);
         }
 
-        Machine machine = MachineMapper.toEntity(request);
+				// MultipartFile에서 파일명 추출
+				String imgFileName = request.getImage().getOriginalFilename();
+        Machine machine = MachineMapper.toEntity(request, imgFileName);
 
         for (Long bodyPartId : request.getBodyPartIdList()) {
             BodyPart bodyPart = adminBodyPartRepository.findById(bodyPartId).orElseThrow(

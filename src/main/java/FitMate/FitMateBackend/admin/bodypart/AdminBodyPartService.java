@@ -32,8 +32,11 @@ public class AdminBodyPartService {
             throw new ApiException(ApiErrorCode.BODY_PART_ALREADY_EXIST_EXCEPTION);
         }
 
+				// MultipartFile에서 파일명 추출
+				String imgFileName = request.getImage().getOriginalFilename();
+
         BodyPart bodyPart = new BodyPart();
-        bodyPart.update(request.getEnglishName(), request.getKoreanName());
+        bodyPart.update(request.getEnglishName(), request.getKoreanName(), imgFileName);
 
         adminBodyPartRepository.save(bodyPart);
     }

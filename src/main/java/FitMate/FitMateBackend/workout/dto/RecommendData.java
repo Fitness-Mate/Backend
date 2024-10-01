@@ -19,6 +19,7 @@ public class RecommendData {
     private String description;
 		private String atcetera;
     private String imgPath;
+		private String videoLink;
     private String weight;
     private String repeat;
     private String set;
@@ -31,6 +32,7 @@ public class RecommendData {
         this.description = recommend.getWorkout().getDescription();
 				this.atcetera = recommend.getWorkout().getAtcetera();
         this.imgPath = S3Util.getAccessURL(ServiceConst.S3_DIR_WORKOUT, recommend.getWorkout().getImgFileName());
+				this.videoLink = recommend.getWorkout().getVideoLink();
         this.weight = recommend.getWeight();
         this.repeat = recommend.getRepeats();
         this.set = recommend.getSets();
