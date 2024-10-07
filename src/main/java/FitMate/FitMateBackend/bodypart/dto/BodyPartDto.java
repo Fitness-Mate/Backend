@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class BodyPartDto {
-    private Long id;
+    private Long bodyPartId;
     private String englishName;
     private String koreanName;
 		private String imgPath;
 
     public BodyPartDto(BodyPart bodyPart) {
-        this.id = bodyPart.getId();
+        this.bodyPartId = bodyPart.getId();
         this.englishName = bodyPart.getEnglishName();
         this.koreanName = bodyPart.getKoreanName();
 				this.imgPath = S3Util.getAccessURL(ServiceConst.S3_DIR_BODYPART, bodyPart.getImgFileName());
