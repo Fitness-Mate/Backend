@@ -58,27 +58,33 @@ public class MyFitService {
     }
 
     @Transactional
-    public String updateMyWorkout(Long myWorkoutId, MyWorkoutUpdateRequest request) {
-        MyWorkout myWorkout = this.findMyWorkoutById(myWorkoutId);
-        List<MyWorkout> myWorkouts = this.findAllMyWorkoutWithRoutineId(myWorkout.getRoutine().getId());
+		public String updateMyWorkout(Long myWorkoutId, MyWorkoutUpdateRequest request) {
+    MyWorkout myWorkout = this.findMyWorkoutById(myWorkoutId);
+    List<MyWorkout> myWorkouts = this.findAllMyWorkoutWithRoutineId(myWorkout.getRoutine().getId());
 
-        int oldIndex = myWorkout.getMyFitIndex();
-        int newIndex = request.getMyWorkoutIndex();
-        if(oldIndex > newIndex) {
-            //만약 4에서 1로 이동했다면.. 원래 1, 2, 3을 2,3,4로 바꿔준다.
-            for (int i = 0; i < (oldIndex-1); i++) {
-                myWorkouts.get(i).upMyFitIndex();
-            }
+    int oldIndex = myWorkout.getMyFitIndex();
+    int newIndex = request.getMyWorkoutIndex();
 
-        } else if(oldIndex < newIndex) {
-            //만약 1에서 4로 이동했다면.. 원래 2, 3, 4를 1, 2, 3으로 바꿔준다.
-            for (int i = oldIndex; i < newIndex; i++) {
-                myWorkouts.get(i).downMyFitIndex();
-            }
+    // 인덱스가 변할 때마다 전체 인덱스 범위 내에서 항목을 밀거나 당기도록 조정
+    if (oldIndex > newIndex) {
+        // 4에서 1로 이동 시, 원래 1, 2, 3은 2, 3, 4로 밀림
+        for (int i = newIndex - 1; i < oldIndex - 1; i++) {
+            myWorkouts.get(i).upMyFitIndex();  // 인덱스를 올림
         }
-        myWorkout.update(request);
-        return "[myFitId:" + myWorkout.getId() +"] 수정 완료";
+    } else if (oldIndex < newIndex) {
+        // 1에서 4로 이동 시, 원래 2, 3, 4는 1, 2, 3으로 당겨짐
+        for (int i = oldIndex; i < newIndex; i++) {
+            myWorkouts.get(i).downMyFitIndex();  // 인덱스를 내림
+        }
     }
+    
+    // 선택된 항목의 인덱스를 업데이트
+    myWorkout.update(request);
+
+    // 상태 저장 후 완료 메시지 반환
+    return "[myFitId:" + myWorkout.getId() + "] 수정 완료";
+}
+
 
     @Transactional
     public String updateMySupplement(Long mySupplementId, MySupplementUpdateRequest request) {
