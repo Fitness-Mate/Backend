@@ -83,6 +83,12 @@ public class WorkoutRepository {
         em.remove(workout);
     }
 
+		// 영어, 숫자, 특수 문자를 제거하고 한글만 남기기
+		private String sanitizeKeyword(String keyword) {
+			return keyword.replaceAll("[^가-힣\\s]", ""); // 한글과 공백 제외한 모든 문자 제거
+		}
+
+
     public List<Workout> searchAll(int page, WorkoutSearchCond search) {
         int offset = (page-1)*ServiceConst.PAGE_BATCH_SIZE;
         int limit = ServiceConst.PAGE_BATCH_SIZE;
@@ -92,14 +98,19 @@ public class WorkoutRepository {
         if(search.getSearchKeyword() != null) {
             //search keyword tokenization
             String match = "[^\uAC00-\uD7A30-9a-zA-Z\u3131-\u314E\u314F-\u3163]";
-
             String[] keywords = search.getSearchKeyword().replaceAll(match, "*").split("\\*");
-            for (String keyword : keywords) { //remove blank and duplicate keywords
-                if(hasText(keyword)) keywordSet.add(keyword);
+            
+						for (String keyword : keywords) { // 특수 문자 제거 후 blank 및 duplicate 제거
+							String sanitizedKeyword = sanitizeKeyword(keyword); // 특수 문자 제거
+              if (hasText(sanitizedKeyword)) keywordSet.add(sanitizedKeyword);
             }
-            for (String keyword : keywordSet) { //builder setting
-                builder.or(QWorkout.workout.englishName.like("%" + keyword + "%"));
-                builder.or(QWorkout.workout.koreanName.like("%" + keyword + "%"));
+            // contains 조건으로 각 키워드를 독립적인 단어로 포함하는지 확인
+						for (String keyword : keywordSet) {
+							builder.or(
+                QWorkout.workout.koreanName.startsWith(keyword + " ") // 시작에 단독으로 위치한 경우
+								.or(QWorkout.workout.koreanName.endsWith(" " + keyword)) // 끝에 단독으로 위치한 경우
+								.or(QWorkout.workout.koreanName.contains(" " + keyword + " ")) // 중간에 공백으로 구분된 경우
+              );
             }
         }
         if(search.getBodyPartKoreanName() != null) {
