@@ -49,10 +49,12 @@ public class WorkoutRecommendationService {
 
         List<BodyPart> bodyParts = bodyPartRepository.findByBodyPartKoreanName(request.getBodyPartKoreanName());
         List<Machine> machines = machineRepository.findByMachineKoreanName(request.getMachineKoreanName());
+				// caution 값을 설정해야 함
+				String caution = "필수 주의사항 내용을 여기에 넣어 주세요";
 
         WorkoutRecommendation workoutRecommendation =
                 WorkoutRecommendation.createWorkoutRecommendation
-                        (user, bodyParts, machines, workoutServiceImpl.getAllWorkoutToString(bodyParts, machines));
+                        (user, bodyParts, machines, workoutServiceImpl.getAllWorkoutToString(bodyParts, machines), caution);
 
         workoutRecommendationRepository.save(workoutRecommendation);
         user.addRecommendationHistory(workoutRecommendation);

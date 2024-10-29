@@ -30,7 +30,13 @@ public class WorkoutRecommendation extends Recommendation {
 		private String caution;  // 운동에 대한 주의사항 저장 추가
 
     public static WorkoutRecommendation createWorkoutRecommendation
-            (User user, List<BodyPart> bodyParts, List<Machine> machines, String workoutList) {
+            (User user, List<BodyPart> bodyParts, List<Machine> machines, String workoutList, String caution) {
+
+				// 주의사항이 null이거나 빈 문자열인 경우 예외 발생
+    if (caution == null || caution.trim().isEmpty()) {
+        throw new IllegalArgumentException("Caution (주의사항) is required and cannot be null or empty.");
+    }
+
         WorkoutRecommendation workoutRecommendation = new WorkoutRecommendation();
         BodyData bodyData = user.getBodyDataHistory().get(user.getBodyDataHistory().size() - 1);
         workoutRecommendation.setBodyData(bodyData);
@@ -53,6 +59,7 @@ public class WorkoutRecommendation extends Recommendation {
         workoutRecommendation.setRequestedMachines(machineString);
 
         workoutRecommendation.setRecommendationType("Workout");
+				workoutRecommendation.setCaution(caution); // 주의사항 설정
 
         String bodyPartQuery = updateBodyPartQuery(bodyParts);
         String machineQuery = updateMachineQuery(machines);
