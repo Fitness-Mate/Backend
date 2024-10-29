@@ -69,7 +69,7 @@ public class MyFitController {
                 .orElseThrow(() -> new CustomException(CustomErrorCode.WORKOUT_NOT_FOUND_EXCEPTION));
 
             MyFit myWorkout;
-            if(request.getWeight() != null && request.getRep() != null && request.getSetCount() != null) {
+            if(request.getWeight() != null && request.getRep() != null && request.getSetCount() != null && request.getCaution() != null) {
                 myWorkout = new MyWorkout(routine, workout, request, curIdx++);
             } else {
                 myWorkout = new MyWorkout(routine, workout, curIdx++);
