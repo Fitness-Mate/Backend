@@ -27,7 +27,6 @@ public class RecommendedWorkout {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "workout_id")
     private Workout workout;
-
     private String weight;
     private String repeats;
     private String sets;

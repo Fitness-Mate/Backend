@@ -22,6 +22,7 @@ public class MyWorkout extends MyFit {
     private String weight;
     private String rep;
     private String setCount;
+		private String caution;
 
     public MyWorkout(Routine routine, Workout workout, int myFitIndex) {
         super(routine, myFitIndex);
@@ -33,6 +34,7 @@ public class MyWorkout extends MyFit {
         this.weight = request.getWeight();
         this.rep = request.getRep();
         this.setCount = request.getSetCount();
+				this.caution = request.getCaution();
     }
 
     public void update(MyWorkoutUpdateRequest request) {
@@ -40,5 +42,6 @@ public class MyWorkout extends MyFit {
         this.weight = request.getWeight();
         this.rep = request.getRep();
         this.setCount = request.getSetCount();
+				this.caution = request.getCaution();
     }
 }

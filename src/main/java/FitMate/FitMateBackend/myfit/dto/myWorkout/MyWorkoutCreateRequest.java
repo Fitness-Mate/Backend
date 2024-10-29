@@ -12,4 +12,5 @@ public class MyWorkoutCreateRequest {
     private String weight;
     private String rep;
     private String setCount;
+		private String caution;
 }

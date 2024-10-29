@@ -21,6 +21,7 @@ public class MyWorkoutReadAllResponse {
     private String weight;
     private String rep;
     private String setCount;
+		private String caution;
 
     private Long workoutId;
     private String workoutName;
@@ -36,6 +37,7 @@ public class MyWorkoutReadAllResponse {
         this.rep = myWorkout.getRep();
         this.setCount = myWorkout.getSetCount();
         this.weight = myWorkout.getWeight();
+				this.caution = myWorkout.getCaution();
 
         Workout workout = myWorkout.getWorkout();
         this.workoutId = workout.getId();

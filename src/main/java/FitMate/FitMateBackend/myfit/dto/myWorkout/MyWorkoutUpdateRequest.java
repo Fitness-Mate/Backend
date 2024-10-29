@@ -12,4 +12,5 @@ public class MyWorkoutUpdateRequest {
     private String weight;
     private String rep;
     private String setCount;
+		private String caution;
 }
