@@ -19,161 +19,190 @@ import java.util.Optional;
 import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import java.util.Collections;
 
 @Repository
 @RequiredArgsConstructor
 public class WorkoutRepository {
 
-    private final EntityManager em;
-    private final BodyPartService bodyPartService;
+	private final EntityManager em;
+	private final BodyPartService bodyPartService;
 
-    public void save(Workout workout) {
-        em.persist(workout);
-    }
+	public void save(Workout workout) {
+		em.persist(workout);
+	}
 
-    public Optional<Workout> findById(Long id) {
-        return Optional.ofNullable(em.find(Workout.class, id));
-    }
-    public Optional<Workout> findByKoreanName(String koreanName) {
-        return em.createQuery("select w from Workout w where w.koreanName = :koreanName", Workout.class)
-                .setParameter("koreanName", koreanName)
-                .getResultList()
-                .stream().findAny();
-    }
-    public Optional<Workout> findByEnglishName(String englishName) {
-        return em.createQuery("select w from Workout w where w.englishName = :englishName", Workout.class)
-                .setParameter("englishName", englishName)
-                .getResultList()
-                .stream().findAny();
-    }
+	public Optional<Workout> findById(Long id) {
+		return Optional.ofNullable(em.find(Workout.class, id));
+	}
 
-    //Overloading
-    public List<Workout> findAll(int page) {
-        int offset = (page-1)*ServiceConst.PAGE_BATCH_SIZE;
-        int limit = ServiceConst.PAGE_BATCH_SIZE;
+	public Optional<Workout> findByKoreanName(String koreanName) {
+		return em.createQuery("select w from Workout w where w.koreanName = :koreanName", Workout.class)
+				.setParameter("koreanName", koreanName)
+				.getResultList()
+				.stream().findAny();
+	}
 
-        return em.createQuery("select w from Workout w order by w.id desc", Workout.class)
-                .setFirstResult(offset)
-                .setMaxResults(limit)
-                .getResultList();
-    }
-    public List<Workout> findAll() {
-        return em.createQuery("select w from Workout w order by w.id desc", Workout.class)
-                .getResultList();
-    }
-    //Overloading
-    public List<Workout> findAllWithBodyPartsAndMachines(List<BodyPart> bodyParts, List<Machine> machines) {
-        BooleanBuilder builder = new BooleanBuilder();
+	public Optional<Workout> findByEnglishName(String englishName) {
+		return em.createQuery("select w from Workout w where w.englishName = :englishName", Workout.class)
+				.setParameter("englishName", englishName)
+				.getResultList()
+				.stream().findAny();
+	}
 
-        for (BodyPart bodyPart : bodyParts) {
-            builder.or(QWorkout.workout.bodyParts.contains(bodyPart));
-        }
+	// Overloading
+	public List<Workout> findAll(int page) {
+		int offset = (page - 1) * ServiceConst.PAGE_BATCH_SIZE;
+		int limit = ServiceConst.PAGE_BATCH_SIZE;
 
-        QWorkout workout = QWorkout.workout;
-        JPAQueryFactory query = new JPAQueryFactory(em);
-        return query
-                .select(workout)
-                .from(workout)
-                .where(builder)
-                .orderBy(workout.id.desc())
-                .fetch();
-    }
+		return em.createQuery("select w from Workout w order by w.id desc", Workout.class)
+				.setFirstResult(offset)
+				.setMaxResults(limit)
+				.getResultList();
+	}
 
-    public void remove(Workout workout) {
-        em.remove(workout);
-    }
+	public List<Workout> findAll() {
+		return em.createQuery("select w from Workout w order by w.id desc", Workout.class)
+				.getResultList();
+	}
 
-		// 영어, 숫자, 특수 문자를 제거하고 한글만 남기기
-		private String sanitizeKeyword(String keyword) {
-			return keyword.replaceAll("[^가-힣\\s]", ""); // 한글과 공백 제외한 모든 문자 제거
+	// Overloading
+	public List<Workout> findAllWithBodyPartsAndMachines(List<BodyPart> bodyParts, List<Machine> machines) {
+		BooleanBuilder builder = new BooleanBuilder();
+
+		for (BodyPart bodyPart : bodyParts) {
+			builder.or(QWorkout.workout.bodyParts.contains(bodyPart));
 		}
 
+		QWorkout workout = QWorkout.workout;
+		JPAQueryFactory query = new JPAQueryFactory(em);
+		return query
+				.select(workout)
+				.from(workout)
+				.where(builder)
+				.orderBy(workout.id.desc())
+				.fetch();
+	}
 
-    public List<Workout> searchAll(int page, WorkoutSearchCond search) {
-        int offset = (page-1)*ServiceConst.PAGE_BATCH_SIZE;
-        int limit = ServiceConst.PAGE_BATCH_SIZE;
+	public void remove(Workout workout) {
+		em.remove(workout);
+	}
 
-        BooleanBuilder builder = new BooleanBuilder();
-        Set<String> keywordSet = new HashSet<>();
-        if(search.getSearchKeyword() != null) {
-            //search keyword tokenization
-            String match = "[^\uAC00-\uD7A30-9a-zA-Z\u3131-\u314E\u314F-\u3163]";
-            String[] keywords = search.getSearchKeyword().replaceAll(match, "*").split("\\*");
-            
-						for (String keyword : keywords) { // 특수 문자 제거 후 blank 및 duplicate 제거
-							String sanitizedKeyword = sanitizeKeyword(keyword); // 특수 문자 제거
-              if (hasText(sanitizedKeyword)) keywordSet.add(sanitizedKeyword);
-            }
-            // contains 조건으로 각 키워드를 독립적인 단어로 포함하는지 확인
-						for (String keyword : keywordSet) {
-							builder.or(
-                QWorkout.workout.koreanName.startsWith(keyword + " ") // 시작에 단독으로 위치한 경우
+	// 영어, 숫자, 특수 문자를 제거하고 한글만 남기기
+	private String sanitizeKeyword(String keyword) {
+		return keyword.replaceAll("[^가-힣\\s]", ""); // 한글과 공백 제외한 모든 문자 제거
+	}
+
+	public List<Workout> searchAll(int page, WorkoutSearchCond search) {
+		int offset = (page - 1) * ServiceConst.PAGE_BATCH_SIZE;
+		int limit = ServiceConst.PAGE_BATCH_SIZE;
+
+		BooleanBuilder builder = new BooleanBuilder();
+		Set<String> keywordSet = new HashSet<>();
+		if (search.getSearchKeyword() != null) {
+			// search keyword tokenization
+			String match = "[^\uAC00-\uD7A30-9a-zA-Z\u3131-\u314E\u314F-\u3163]";
+			String[] keywords = search.getSearchKeyword().replaceAll(match, "*").split("\\*");
+
+			for (String keyword : keywords) {
+				String sanitizedKeyword = sanitizeKeyword(keyword); // 특수 문자 제거
+				// 공백이 아니고 중복되지 않으며, 자음 또는 모음만 포함된 키워드를 제외
+				if (hasText(sanitizedKeyword) && !sanitizedKeyword.matches("^[\u3131-\u314E\u314F-\u3163]+$")) {
+					keywordSet.add(sanitizedKeyword);
+				}
+			}
+
+			if (keywordSet.isEmpty()) {
+				return Collections.emptyList(); // 빈 리스트 반환
+			}
+
+			// contains 조건으로 각 키워드를 독립적인 단어로 포함하는지 확인
+			for (String keyword : keywordSet) {
+				builder.or(
+						QWorkout.workout.koreanName.startsWith(keyword + " ") // 시작에 단독으로 위치한 경우
 								.or(QWorkout.workout.koreanName.endsWith(" " + keyword)) // 끝에 단독으로 위치한 경우
 								.or(QWorkout.workout.koreanName.contains(" " + keyword + " ")) // 중간에 공백으로 구분된 경우
-              );
-            }
-        }
-        if(search.getBodyPartKoreanName() != null) {
-            for (String koreanName : search.getBodyPartKoreanName()) {
-                BodyPart bodyPart = bodyPartService.findByKoreanName(koreanName);
-                builder.or(QWorkout.workout.bodyParts.contains(bodyPart));
-            }
-        }
+								.or(QWorkout.workout.koreanName.like("%" + keyword + "%")) // 단어로 정확히 매칭되지 않으면 부분 문자열로도 확인
+				);
+			}
+		}
 
-        QWorkout workout = QWorkout.workout;
-        JPAQueryFactory query = new JPAQueryFactory(em);
-        List<Workout> result;
+		if (search.getBodyPartKoreanName() != null) {
+			for (String koreanName : search.getBodyPartKoreanName()) {
+				BodyPart bodyPart = bodyPartService.findByKoreanName(koreanName);
+				builder.or(QWorkout.workout.bodyParts.contains(bodyPart));
+			}
+		}
 
-        if(page == -1) {
-            result = query
-                    .select(workout)
-                    .from(workout)
-                    .where(builder)
-                    .orderBy(workout.id.desc())
-                    .fetch();
-        } else {
-            result = query
-                    .select(workout)
-                    .from(workout)
-                    .where(builder)
-                    .orderBy(workout.id.desc())
-                    .offset(offset)
-                    .limit(limit)
-                    .fetch();
-        }
+		QWorkout workout = QWorkout.workout;
+		JPAQueryFactory query = new JPAQueryFactory(em);
+		List<Workout> result;
 
-        if(search.getSearchKeyword() != null) { //keyword weight sorting
-            List<WorkoutWeight> list = new ArrayList<>(result.stream().map(w -> {
-                int weight = 0;
-                for (String keyword : keywordSet) {
-                    if (w.getEnglishName().contains(keyword)) weight += 1;
-                    if (w.getKoreanName().contains(keyword)) weight += 1;
-                }
-                return new WorkoutWeight(w, weight);
-            }).toList());
-            list.sort((o1, o2) -> o2.getWeight() - o1.getWeight());
+		if (page == -1) {
+			result = query
+					.select(workout)
+					.from(workout)
+					.where(builder)
+					.orderBy(workout.id.desc())
+					.fetch();
+		} else {
+			result = query
+					.select(workout)
+					.from(workout)
+					.where(builder)
+					.orderBy(workout.id.desc())
+					.offset(offset)
+					.limit(limit)
+					.fetch();
+		}
 
-            return list.stream().map(WorkoutWeight::getWorkout).toList();
-        } else {
-            return result;
-        }
-    }
+		if (search.getSearchKeyword() != null) {
+			List<WorkoutWeight> weightedList = result.stream()
+					.map(w -> {
+						int weight = keywordSet.stream()
+								.mapToInt(keyword -> {
+									int keywordWeight = 0;
+									if (w.getKoreanName().startsWith(keyword + " ")) {
+										keywordWeight += 3; // 높은 우선순위
+									}
+									if (w.getKoreanName().endsWith(" " + keyword)) {
+										keywordWeight += 2; // 중간 우선순위
+									}
+									if (w.getKoreanName().contains(" " + keyword + " ")) {
+										keywordWeight += 1; // 낮은 우선순위
+									}
+									return keywordWeight;
+								})
+								.sum();
+						return new WorkoutWeight(w, weight);
+					})
+					.sorted((o1, o2) -> Integer.compare(o2.getWeight(), o1.getWeight())) // 내림차순 정렬
+					.toList();
 
-    static class WorkoutWeight {
-        private Workout workout;
-        private int weight;
+			return weightedList.stream()
+					.map(WorkoutWeight::getWorkout)
+					.toList();
+		} else {
+			return result;
+		}
 
-        public WorkoutWeight(Workout workout, int weight) {
-            this.workout = workout;
-            this.weight = weight;
-        }
+	}
 
-        public Workout getWorkout() {
-            return workout;
-        }
+	static class WorkoutWeight {
+		private Workout workout;
+		private int weight;
 
-        public int getWeight() {
-            return weight;
-        }
-    }
+		public WorkoutWeight(Workout workout, int weight) {
+			this.workout = workout;
+			this.weight = weight;
+		}
+
+		public Workout getWorkout() {
+			return workout;
+		}
+
+		public int getWeight() {
+			return weight;
+		}
+	}
 }
