@@ -100,13 +100,16 @@ public class WorkoutRepository {
 		BooleanBuilder builder = new BooleanBuilder();
 		Set<String> keywordSet = new HashSet<>();
 		if (search.getSearchKeyword() != null) {
-			// search keyword tokenization
+			// 검색 키워드 단어 분리
 			String match = "[^\uAC00-\uD7A30-9a-zA-Z\u3131-\u314E\u314F-\u3163]";
 			String[] keywords = search.getSearchKeyword().replaceAll(match, "*").split("\\*");
 
+			if (keywords.length == 0 || (keywords.length == 1 && keywords[0].trim().isEmpty())) {
+				return findAll(page); // 공백 문자열인 경우 전체 반환
+			}
 			for (String keyword : keywords) {
 				String sanitizedKeyword = sanitizeKeyword(keyword); // 특수 문자 제거
-				// 공백이 아니고 중복되지 않으며, 자음 또는 모음만 포함된 키워드를 제외
+				// 자음 또는 모음만 포함된 키워드를 제외
 				if (hasText(sanitizedKeyword) && !sanitizedKeyword.matches("^[\u3131-\u314E\u314F-\u3163]+$")) {
 					keywordSet.add(sanitizedKeyword);
 				}
