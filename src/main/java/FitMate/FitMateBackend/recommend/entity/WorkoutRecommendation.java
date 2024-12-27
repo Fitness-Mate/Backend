@@ -95,18 +95,15 @@ public class WorkoutRecommendation extends Recommendation {
 
 		// 각 운동에 대한 주의사항 요청 추가
 		qString = qString.concat(
-				"5. Please provide meaningful precautions or safety guidelines related to exercise injuries in **Korean**, " +
-						"which are easy for beginners to understand. Each guideline must contain at least 30 Korean characters " +
-						"(excluding spaces) and no more than 50 characters, written in polite Korean language (높임말) to ensure " +
-						"the tone is concise, friendly, and respectful. The precautions should address specific risks, proper " +
-						"techniques, or injury prevention for each exercise.\n");
+				"5. Provide concise, unique safety guidelines in **Korean** (30–50 characters, excluding spaces), focusing on preventing injuries or avoiding common mistakes specific to the exercise by including specific actions (angles, positions, or motions), explaining the potential risks or mistakes being prevented, avoiding general statements or exercise descriptions, excluding the exercise name, and writing in clear and actionable language that is easy to follow.\n");
+
 		qString = qString.concat("For example: \n");
-		qString = qString.concat("[99955][60kg][10][5][로우 머신 사용 시 허리를 중립 자세로 유지하며 무게 중심을 발뒤꿈치에 두세요.]\n");
-		qString = qString.concat("[50112][30kg][10][5][스쿼트 시 무릎이 발끝을 넘지 않도록 자세를 유지하세요.]\n");
-		qString = qString.concat("[249962][35kg][12][4][머신 로우 사용 시 어깨가 들리지 않도록 집중하세요. 자세를 잘못하면 등 부상이 발생할 수 있습니다.]\n");
-		qString = qString.concat("[99957][45kg][10][5][딥스 시 팔꿈치를 너무 벌리지 않도록 하여 어깨 관절의 부담을 줄이세요.]\n");
-		qString = qString.concat("[99956][40kg][12][4][인클라인 벤치프레스 시 머리와 등을 벤치에 밀착하고 가슴을 펴주세요. 어깨 부상을 예방할 수 있습니다.]\n");
-		qString = qString.concat("[150054][20kg][12][4][머신 숄더프레스 시 등받이에 등을 밀착시키고 어깨로만 밀어 올리세요. 허리에 무리가 가지 않도록 주의하세요.]\n");
+		qString = qString.concat("[99955][60kg][10][5][허리를 중립 자세로 유지하며 무게 중심을 발뒤꿈치에 두세요.]\n");
+		qString = qString.concat("[50112][30kg][10][5][무릎이 발끝을 넘지 않도록 자세를 유지하세요.]\n");
+		qString = qString.concat("[249962][35kg][12][4][어깨가 들리지 않도록 집중하세요. 자세를 잘못하면 등 부상이 발생할 수 있습니다.]\n");
+		qString = qString.concat("[99957][45kg][10][5][팔꿈치를 너무 벌리지 않도록 하여 어깨 관절의 부담을 줄이세요.]\n");
+		qString = qString.concat("[99956][40kg][12][4][머리와 등을 벤치에 밀착하고 가슴을 펴주세요. 어깨 부상을 예방할 수 있습니다.]\n");
+		qString = qString.concat("[150054][20kg][12][4][등받이에 등을 밀착시키고 어깨로만 밀어 올리세요. 허리에 무리가 가지 않도록 주의하세요.]\n");
 		qString = qString.concat(
 				"[workout index in list][weight(kg)][repeat][set][caution]\n");
 
