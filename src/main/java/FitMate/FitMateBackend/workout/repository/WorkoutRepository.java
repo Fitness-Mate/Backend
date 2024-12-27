@@ -98,97 +98,79 @@ public class WorkoutRepository {
 		int limit = ServiceConst.PAGE_BATCH_SIZE;
 
 		BooleanBuilder builder = new BooleanBuilder();
-		Set<String> keywordSet = new HashSet<>();
+
+		// 검색 키워드 처리
 		if (search.getSearchKeyword() != null) {
-			// 검색 키워드 단어 분리
 			String match = "[^\uAC00-\uD7A30-9a-zA-Z\u3131-\u314E\u314F-\u3163]";
 			String[] keywords = search.getSearchKeyword().replaceAll(match, "*").split("\\*");
 
-			if (keywords.length == 0 || (keywords.length == 1 && keywords[0].trim().isEmpty())) {
-				return findAll(page); // 공백 문자열인 경우 전체 반환
-			}
 			for (String keyword : keywords) {
-				String sanitizedKeyword = sanitizeKeyword(keyword); // 특수 문자 제거
-				// 자음 또는 모음만 포함된 키워드를 제외
-				if (hasText(sanitizedKeyword) && !sanitizedKeyword.matches("^[\u3131-\u314E\u314F-\u3163]+$")) {
-					keywordSet.add(sanitizedKeyword);
+				if (hasText(keyword)) {
+					builder.or(QWorkout.workout.koreanName.like("%" + keyword + "%"))
+							.or(QWorkout.workout.englishName.like("%" + keyword + "%"));
 				}
 			}
-
-			if (keywordSet.isEmpty()) {
-				return Collections.emptyList(); // 빈 리스트 반환
-			}
-
-			// contains 조건으로 각 키워드를 독립적인 단어로 포함하는지 확인
-			for (String keyword : keywordSet) {
-				builder.or(
-						QWorkout.workout.koreanName.startsWith(keyword + " ") // 시작에 단독으로 위치한 경우
-								.or(QWorkout.workout.koreanName.endsWith(" " + keyword)) // 끝에 단독으로 위치한 경우
-								.or(QWorkout.workout.koreanName.contains(" " + keyword + " ")) // 중간에 공백으로 구분된 경우
-								.or(QWorkout.workout.koreanName.like("%" + keyword + "%")) // 단어로 정확히 매칭되지 않으면 부분 문자열로도 확인
-				);
-			}
 		}
 
+		// 신체 부위 처리
 		if (search.getBodyPartKoreanName() != null) {
+			BooleanBuilder bodyPartBuilder = new BooleanBuilder();
 			for (String koreanName : search.getBodyPartKoreanName()) {
 				BodyPart bodyPart = bodyPartService.findByKoreanName(koreanName);
-				builder.or(QWorkout.workout.bodyParts.contains(bodyPart));
+				if (bodyPart != null) {
+					bodyPartBuilder.or(QWorkout.workout.bodyParts.contains(bodyPart));
+				}
 			}
+			builder.and(bodyPartBuilder);
 		}
 
+		// 키워드와 신체 부위 조건이 모두 없으면 전체 반환
+		if (search.getSearchKeyword() == null && search.getBodyPartKoreanName() == null) {
+			return findAll(page);
+		}
+
+		// 쿼리 실행
 		QWorkout workout = QWorkout.workout;
 		JPAQueryFactory query = new JPAQueryFactory(em);
-		List<Workout> result;
+		List<Workout> result = query.select(workout)
+				.from(workout)
+				.where(builder)
+				.orderBy(workout.id.desc())
+				.offset(offset)
+				.limit(limit)
+				.fetch();
 
-		if (page == -1) {
-			result = query
-					.select(workout)
-					.from(workout)
-					.where(builder)
-					.orderBy(workout.id.desc())
-					.fetch();
-		} else {
-			result = query
-					.select(workout)
-					.from(workout)
-					.where(builder)
-					.orderBy(workout.id.desc())
-					.offset(offset)
-					.limit(limit)
-					.fetch();
-		}
-
+		// 키워드 가중치 정렬
 		if (search.getSearchKeyword() != null) {
+			List<String> keywordSet = new ArrayList<>(Set.of(search.getSearchKeyword().split(" ")));
 			List<WorkoutWeight> weightedList = result.stream()
 					.map(w -> {
 						int weight = keywordSet.stream()
 								.mapToInt(keyword -> {
 									int keywordWeight = 0;
 									if (w.getKoreanName().startsWith(keyword + " ")) {
-										keywordWeight += 3; // 높은 우선순위
+										keywordWeight += 3;
 									}
 									if (w.getKoreanName().endsWith(" " + keyword)) {
-										keywordWeight += 2; // 중간 우선순위
+										keywordWeight += 2;
 									}
 									if (w.getKoreanName().contains(" " + keyword + " ")) {
-										keywordWeight += 1; // 낮은 우선순위
+										keywordWeight += 1;
 									}
 									return keywordWeight;
 								})
 								.sum();
 						return new WorkoutWeight(w, weight);
 					})
-					.sorted((o1, o2) -> Integer.compare(o2.getWeight(), o1.getWeight())) // 내림차순 정렬
+					.sorted((o1, o2) -> Integer.compare(o2.getWeight(), o1.getWeight()))
 					.toList();
 
 			return weightedList.stream()
 					.map(WorkoutWeight::getWorkout)
 					.toList();
-		} else {
-			return result;
 		}
 
+		return result;
 	}
 
 	static class WorkoutWeight {
