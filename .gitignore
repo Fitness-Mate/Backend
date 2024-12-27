@@ -42,3 +42,4 @@ out/
 ### DB관련 resource ###
 /src/main/resources/application.properties
 /src/main/resources/application.yml
+application.properties
