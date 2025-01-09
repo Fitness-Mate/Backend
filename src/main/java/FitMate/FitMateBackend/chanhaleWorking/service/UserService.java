@@ -25,109 +25,111 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Slf4j
 public class UserService {
-    private final UserRepository userRepository;
+	private final UserRepository userRepository;
 
-    @Transactional
-    public void register(RegisterForm registerForm){
-        User newUser = User.createUser(registerForm, "Customer");
-        newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
-        userRepository.save(newUser);
-    }
-    @Transactional
-    public void registerAdmin(RegisterForm registerForm){
-        User newUser = User.createUser(registerForm, "Admin");
-        newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
-        userRepository.save(newUser);
-    }
+	@Transactional
+	public void register(RegisterForm registerForm) {
+		User newUser = User.createUser(registerForm, "Customer");
+		newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
+		userRepository.save(newUser);
+	}
 
-    @Transactional(readOnly = true)
-    public Boolean checkDuplicatedLoginEmail(String loginEmail){
-        return userRepository.CheckDuplicatedLoginEmail(loginEmail);
-    }
+	@Transactional
+	public void registerAdmin(RegisterForm registerForm) {
+		User newUser = User.createUser(registerForm, "Admin");
+		newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
+		userRepository.save(newUser);
+	}
 
-    @Transactional
-    public void updateUser(Long userId, UpdateUserForm updateUserForm) {
-        User user = userRepository.findOne(userId);
-        user.updateUser(updateUserForm);
+	@Transactional(readOnly = true)
+	public Boolean checkDuplicatedLoginEmail(String loginEmail) {
+		return userRepository.CheckDuplicatedLoginEmail(loginEmail);
+	}
 
-    }
+	@Transactional
+	public void updateUser(Long userId, UpdateUserForm updateUserForm) {
+		User user = userRepository.findOne(userId);
+		user.updateUser(updateUserForm);
 
-    public boolean checkPassword(Long userId, String password) {
-        User user = userRepository.findOne(userId);
-        return passwordEncoder.matches(password, user.getPassword());
-    }
+	}
 
-    @Transactional
-    public void updateUserPassword(Long userId, String newPassword) {
-        userRepository.findOne(userId).updatePassword(passwordEncoder.encode(newPassword));
-    }
+	public boolean checkPassword(Long userId, String password) {
+		User user = userRepository.findOne(userId);
+		return passwordEncoder.matches(password, user.getPassword());
+	}
 
-    @Transactional
-    public GeneralResponseDto updateUserPassword(String loginEmail) {
-        GeneralResponseDto result = new GeneralResponseDto();
-        User user = userRepository.findByLoginEmail(loginEmail).orElse(null);
-        if (user == null) {
-            result.setStatus("fail");
-            return result;
-        }
-        String newPassword = RandomStringUtils.randomAlphanumeric(8);
-        user.updatePassword(passwordEncoder.encode(newPassword));
-        result.setStatus("ok");
-        result.setMessage(newPassword);
-        return result;
-    }
+	@Transactional
+	public void updateUserPassword(Long userId, String newPassword) {
+		userRepository.findOne(userId).updatePassword(passwordEncoder.encode(newPassword));
+	}
 
-    @Transactional
-    public void deleteUser(Long userId) {
-        userRepository.deleteUser(userId);
-    }
+	@Transactional
+	public GeneralResponseDto updateUserPassword(String loginEmail) {
+		GeneralResponseDto result = new GeneralResponseDto();
+		User user = userRepository.findByLoginEmail(loginEmail).orElse(null);
+		if (user == null) {
+			result.setStatus("fail");
+			return result;
+		}
+		String newPassword = RandomStringUtils.randomAlphanumeric(8);
+		user.updatePassword(passwordEncoder.encode(newPassword));
+		result.setStatus("ok");
+		result.setMessage(newPassword);
+		return result;
+	}
 
-    public User getUserWithId(Long userId) {
-        return userRepository.findOne(userId);
-    }
+	@Transactional
+	public void deleteUser(Long userId) {
+		userRepository.deleteUser(userId);
+	}
 
-    public String getUserPassword(String loginEmail) {
-        User user = userRepository.findByLoginEmail(loginEmail)
-                .filter(u -> u.getLoginEmail().equals(loginEmail))
-                .orElse(null);
-        if (user == null) {
-            return "no Matching email";
-        }
-        return user.getPassword();
-    }
+	public User getUserWithId(Long userId) {
+		return userRepository.findOne(userId);
+	}
 
+	public String getUserPassword(String loginEmail) {
+		User user = userRepository.findByLoginEmail(loginEmail)
+				.filter(u -> u.getLoginEmail().equals(loginEmail))
+				.orElse(null);
+		if (user == null) {
+			return "no Matching email";
+		}
+		return user.getPassword();
+	}
 
-    //🔽🔽🔽 Jwt 🔽🔽🔽
-    private final JwtService jwtService;
-    private final PasswordEncoder passwordEncoder;
-    private final RedisUtil redisUtil;
-    private final RoutineService routineService;
+	// 🔽🔽🔽 Jwt 🔽🔽🔽
+	private final JwtService jwtService;
+	private final PasswordEncoder passwordEncoder;
+	private final RedisUtil redisUtil;
+	private final RoutineService routineService;
 
-    @Transactional
-    public AuthResponse registerWithJwt(RegisterForm registerForm, String type) {
-        User newUser = User.createUserTest(registerForm, passwordEncoder.encode(registerForm.getPassword()), type);
+	@Transactional
+	public AuthResponse registerWithJwt(RegisterForm registerForm, String type) {
+		User newUser = User.createUserTest(registerForm, passwordEncoder.encode(registerForm.getPassword()), type);
 
-        newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
-        userRepository.save(newUser);
+		newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
+		userRepository.save(newUser);
 
-        /**     2023.08.20 chanhale 수정
-         *      newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
-         *      userRepository.save(newUser);
-         *      부분을 토큰 발행보다 먼저 수행하도록 수정 (토큰 발행시 persist되지 않은 인스턴스에서 getId 시도시 null 반환하여 오류 발생하는 것에 대한 대처)
-         */
+		/**
+		 * 2023.08.20 chanhale 수정
+		 * newUser.addBodyDataHistory(BodyData.createBodyData(registerForm.getBodyDataForm()));
+		 * userRepository.save(newUser);
+		 * 부분을 토큰 발행보다 먼저 수행하도록 수정 (토큰 발행시 persist되지 않은 인스턴스에서 getId 시도시 null 반환하여 오류
+		 * 발생하는 것에 대한 대처)
+		 */
 
-        //사용자 기본 운동, 보조제 루틴 1개씩 생성
-        List<RoutineSetData> workoutRoutine = new ArrayList<>();
-        workoutRoutine.add(new RoutineSetData(-1L, 1, "가슴 집중 DAY"));
-        workoutRoutine.add(new RoutineSetData(-1L, 2, "어깨 집중 DAY"));
-        workoutRoutine.add(new RoutineSetData(-1L, 3, "하체 집중 DAY"));
-        routineService.setWorkoutRoutines(newUser, workoutRoutine);
-        routineService.saveSupplementRoutine(newUser);
+		// 사용자 기본 운동, 보조제 루틴 1개씩 생성
+		List<RoutineSetData> workoutRoutine = new ArrayList<>();
+		workoutRoutine.add(new RoutineSetData(-1L, 1, "하체 운동"));
+		workoutRoutine.add(new RoutineSetData(-1L, 2, "가슴 운동"));
+		workoutRoutine.add(new RoutineSetData(-1L, 3, "등 운동"));
+		routineService.setWorkoutRoutines(newUser, workoutRoutine);
+		routineService.saveSupplementRoutine(newUser);
 
-        String accessToken = jwtService.generateAccessToken(newUser, new ExtraClaims(newUser));
-        String refreshToken = jwtService.generateRefreshToken(newUser, false);
-        redisUtil.saveToken(refreshToken, false);
+		String accessToken = jwtService.generateAccessToken(newUser, new ExtraClaims(newUser));
+		String refreshToken = jwtService.generateRefreshToken(newUser, false);
+		redisUtil.saveToken(refreshToken, false);
 
-        return new AuthResponse(accessToken, refreshToken, false);
-    }
+		return new AuthResponse(accessToken, refreshToken, false);
+	}
 }
